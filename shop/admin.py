@@ -4,7 +4,7 @@ from shop.models import Material, Category, Decorations
 
 @admin.register(Decorations)
 class DecorationsAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name', 'material', 'category', 'description']
     list_filter = ['material', 'category']
 
 
