@@ -2,7 +2,8 @@ from django.db import models
 
 
 class Material(models.Model):
-    material = models.CharField(max_length=30, help_text="Материал изделия")
+    material = models.CharField(max_length=30, help_text="Материал изделия",
+                                unique=True)
 
     class Meta:
         verbose_name = "Материал"
@@ -13,7 +14,8 @@ class Material(models.Model):
 
 
 class Category(models.Model):
-    category = models.CharField(max_length=30, help_text="Категория изделия")
+    category = models.CharField(max_length=30, help_text="Категория изделия",
+                                unique=True)
 
     class Meta:
         verbose_name = "Категория"
@@ -25,8 +27,12 @@ class Category(models.Model):
 
 class Decorations(models.Model):
     name = models.CharField(max_length=250, help_text="Название украшения")
-    category = models.ManyToManyField(Material)
-    material = models.ManyToManyField(Category)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL,
+                                 null=True)
+    material = models.ForeignKey(Material, on_delete=models.SET_NULL,
+                                 null=True)
+    description = models.CharField(max_length=1500, help_text="Описание",
+                                   null=True, blank=True)
 
     def __str__(self):
         return (f'<{self.name} {self.category}'
