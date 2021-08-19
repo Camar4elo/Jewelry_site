@@ -1,8 +1,9 @@
 from django.db import models
+from django.utils.safestring import mark_safe
 
 
 class Material(models.Model):
-    material = models.CharField(max_length=30, help_text="Материал изделия",
+    material = models.CharField(max_length=30, verbose_name="Материал изделия",
                                 unique=True)
 
     class Meta:
@@ -14,7 +15,8 @@ class Material(models.Model):
 
 
 class Category(models.Model):
-    category = models.CharField(max_length=30, help_text="Категория изделия",
+    category = models.CharField(max_length=30,
+                                verbose_name="Категория изделия",
                                 unique=True)
 
     class Meta:
@@ -25,19 +27,64 @@ class Category(models.Model):
         return self.category
 
 
-class Decorations(models.Model):
-    name = models.CharField(max_length=250, help_text="Название украшения")
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL,
-                                 null=True)
-    material = models.ForeignKey(Material, on_delete=models.SET_NULL,
-                                 null=True)
-    description = models.CharField(max_length=1500, help_text="Описание",
-                                   null=True, blank=True)
+class Gems(models.Model):
+    gems = models.CharField(max_length=30, verbose_name="Драгоценный камень",
+                            unique=True)
+
+    class Meta:
+        verbose_name = "Драгоценный камень"
+        verbose_name_plural = "Драгоценные камни"
 
     def __str__(self):
-        return (f'<{self.name} {self.category}'
-                f'{self.material}>')
+        return self.gems
+
+
+class Decorations(models.Model):
+    name = models.CharField(max_length=250, verbose_name='Название изделия')
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL,
+                                 null=True, verbose_name='Категория')
+    material = models.ManyToManyField(Material, verbose_name='Материал',
+                                      blank=True)
+    gems = models.ManyToManyField(Gems, verbose_name='Драгоценные камни',
+                                  blank=True)
+    description = models.TextField(max_length=1500, verbose_name='Описание',
+                                   null=True, blank=True)
+    price = models.DecimalField(max_digits=100, decimal_places=2, null=True,
+                                verbose_name='Цена')
 
     class Meta:
         verbose_name = "Украшение"
         verbose_name_plural = "Украшения"
+
+    def __str__(self):
+        return self.name
+
+    def display_gems(self):
+        return "\n".join([p.gems for p in self.gems.all()])
+
+    display_gems.short_description = 'Драгоценные камни'
+
+    def display_material(self):
+        return "\n".join([p.material for p in self.material.all()])
+
+    display_material.short_description = 'Материал'
+
+    def display_images(self):
+        return "\n".join([p.material for p in self.material.all()])
+
+
+class Images(models.Model):
+    image = models.ImageField(upload_to='', verbose_name='Изображение',
+                              blank=True, null=True)
+    decorations = models.ForeignKey(Decorations, on_delete=models.CASCADE,
+                                    verbose_name='Название изделия',
+                                    related_name='images')
+
+    class Meta:
+        verbose_name = "Изображение"
+        verbose_name_plural = "Изображения"
+
+    def display_image(self):
+        return mark_safe(f'<img src="{self.image.url}"width="100" height="100"')
+
+    display_image.short_description = 'Изображение'
