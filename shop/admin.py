@@ -8,10 +8,11 @@ class ImagesAdmin(admin.StackedInline):
 
 @admin.register(Decorations)
 class DecorationsAdmin(admin.ModelAdmin):
+    # fields = ('name', 'category', ('gems', 'material'),
+    #           'price', 'description')
     list_display = ('name', 'category', 'display_gems', 'display_material',
-                    'price', 'description')
+                    'price', 'description', 'display_image')
     list_filter = ('material', 'category', 'price', 'gems')
-
     inlines = [ImagesAdmin]
 
 
@@ -32,5 +33,4 @@ class GemsAdmin(admin.ModelAdmin):
 
 @admin.register(Images)
 class ImagesAdmin(admin.ModelAdmin):
-    list_display = ['decorations', 'display_image']
-    list_filter = ['decorations__name', 'decorations__category']
+    list_display = ['display_image']
