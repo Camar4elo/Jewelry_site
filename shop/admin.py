@@ -10,9 +10,9 @@ class ImageAdmin(admin.StackedInline):
 class DecorationAdmin(admin.ModelAdmin):
     fields = ['name', 'category', ('gem', 'material'),
               'price', 'description']
-    list_display = ('name', 'category', 'display_gems', 'display_material',
-                    'price', 'description', 'display_image')
-    list_filter = ('material', 'category', 'price', 'gem')
+    list_display = ['name', 'category', 'display_gems', 'display_material',
+                    'price', 'description', 'display_image']
+    list_filter = ['material', 'category', 'price', 'gem']
     inlines = [ImageAdmin]
 
 
