@@ -40,7 +40,12 @@ class Gem(models.Model):
 
 
 class Image(models.Model):
-    name = models.ImageField(upload_to='', verbose_name='Изображение',
+    def set_file_directory(instance, filename):
+        return (f'{instance.decoration.category}/'
+                f'{instance.decoration.name}/{filename}')
+
+    name = models.ImageField(upload_to=set_file_directory,
+                             verbose_name='Изображение',
                              blank=True, null=True)
     decoration = models.ForeignKey('Decoration', on_delete=models.CASCADE,
                                    verbose_name='Название изделия',
@@ -51,12 +56,18 @@ class Image(models.Model):
         verbose_name_plural = 'Изображения'
 
     def __str__(self):
-        return self.name.url
+        return self.name.path
 
     def display_image(self):
         return mark_safe(f'<img src="{self.name.url}"width="100" height="100"')
 
     display_image.short_description = 'Изображение'
+
+    def delete(self, *args, **kwargs):
+        storage = self.name.storage
+        path = self.name.path
+        super(Image, self).delete(*args, **kwargs)
+        storage.delete(path)
 
 
 class Decoration(models.Model):
@@ -64,7 +75,7 @@ class Decoration(models.Model):
                             unique=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL,
                                  null=True, verbose_name='Категория',
-                                 related_name='decoration')
+                                 related_name='categ')
     material = models.ManyToManyField(Material, verbose_name='Материал',
                                       blank=True)
     gem = models.ManyToManyField(Gem, verbose_name='Драгоценные камни',
@@ -91,12 +102,13 @@ class Decoration(models.Model):
 
     display_material.short_description = 'Материал'
 
-    def display_image(self):
+    def display_images(self):
         try:
-            return mark_safe(f'<img src="'
-                             f'{self.image.filter().first().name.url}'
-                             f'"width="100" height="100"')
-        except AttributeError:
+            images = ''
+            for image in self.image.all():
+                images += (f'<img src="{image.name.url}"'
+                           f'height="100" width="100"/>')
+            return mark_safe(images)
+        except (AttributeError, ValueError):
             return None
-
-    display_image.short_description = 'Изображение'
+    display_images.short_description = 'Изображение'
