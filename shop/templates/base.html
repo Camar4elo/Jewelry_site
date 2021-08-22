@@ -23,11 +23,11 @@
                             <img src="media/logo.svg" alt="Logo">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            data-bs-target="#navbarMenu" aria-controls="navbarMenu"
                             aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse order-4 order-lg-1" id="navbarMenu1">
+                        <div class="collapse navbar-collapse order-4 order-lg-1" id="navbarMenu">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="{% url 'base' %}">Главная</a>
@@ -40,6 +40,19 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="{% url 'base' %}">Колье</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="collapse navbar-collapse order-5 order-lg-3" id="navbarMenu">
+                            <ul class="navbar-nav ml-auto position-relative">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{% url 'base' %}">Контакты</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.instagram.com/"><img src="media/unnamed.webp" alt="Inst" style="width: 25px; height: 25px;"></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://vk.com/"><img src="media/VK.com-logo.svg.png" alt="Inst" style="width: 25px; height: 25px;"></a>
                                 </li>
                             </ul>
                         </div>
