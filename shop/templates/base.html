@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     {% block title %}
     <title>Добро пожаловать!</title>
     {% endblock %}
@@ -14,8 +15,8 @@
 
 <body>
     {% load static %}
-    <div class="container-fluid">
-        <div class="row">
+    <header>
+        <div class="container-fluid" style="font-family: 'Roboto', sans-serif; font-size: 20px; font-weight: bold;">
             <nav class="navbar navbar-expand-md navbar-light">
                 <div class="container">
                     <a class="navbar-brand order-md-2" href="{% url 'base' %}">
@@ -26,25 +27,25 @@
                         <span class="navbar-toggler-icon "></span>
                     </button>
                     <div class="collapse navbar-collapse order-md-1" id="navbarMenu">
-                        <ul class="navbar-nav me-auto">
+                        <ul class="navbar-nav me-auto" >
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url 'base' %}">Главная</a>
+                                <a class="nav-link" id="menu_link" href="{% url 'base' %}">ГЛАВНАЯ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url 'base' %}">Кольца</a>
+                                <a class="nav-link" id="menu_link" href="{% url 'rings' %}">КОЛЬЦА</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url 'base' %}">Серьги</a>
+                                <a class="nav-link" id="menu_link" href="{% url 'earrings' %}">СЕРЬГИ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url 'base' %}">Колье</a>
+                                <a class="nav-link" id="menu_link" href="{% url 'necklaces' %}">КОЛЬЕ</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="collapse navbar-collapse order-md-3" id="navbarMenu2">
+                    <div class="collapse navbar-collapse order-md-3" id="navbarMenu">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url 'base' %}">Контакты</a>
+                                <a class="nav-link" id="menu_link" href="{% url 'contacts' %}">КОНТАКТЫ</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="https://www.instagram.com/"><img src="media/unnamed.webp"
@@ -55,19 +56,21 @@
                                         alt="Inst" style="width: 25px; height: 25px;"></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="https://www.whatsapp.com/"><img src="media/whatsapp-icon-logo.svg"
-                                        alt="Inst" style="width: 25px; height: 25px;"></a>
+                                <a class="nav-link" href="https://www.whatsapp.com/"><img
+                                        src="media/whatsapp-icon-logo.svg" alt="Inst"
+                                        style="width: 25px; height: 25px;"></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="https://tlgrm.ru/"><img src="media/512px-Telegram_logo.svg.png"
-                                        alt="Inst" style="width: 25px; height: 25px;"></a>
+                                <a class="nav-link" href="https://tlgrm.ru/"><img
+                                        src="media/512px-Telegram_logo.svg.png" alt="Inst"
+                                        style="width: 25px; height: 25px;"></a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
-    </div>
+    </header>
     {% block content %} {% endblock %}
     <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
 </body>
