@@ -15,57 +15,62 @@
 
 <body>
     {% load static %}
-    <header>
+    <header">
         <div class="container-fluid" style="font-family: 'Roboto', sans-serif; font-size: 20px; font-weight: bold;">
             <nav class="navbar navbar-expand-md navbar-light">
                 <div class="container">
-                    <a class="navbar-brand order-md-2" href="{% url 'base' %}">
-                        <img src="media/logo.svg" alt="Logo">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
-                        aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="col-sm">
+                        <div class="collapse navbar-collapse" id="navbarMenu">
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="menu_link" href="{% url 'rings' %}">КОЛЬЦА</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="menu_link" href="{% url 'earrings' %}">СЕРЬГИ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="menu_link" href="{% url 'necklaces' %}">КОЛЬЕ</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <a class="navbar-brand position-absolute top-5 start-50 translate-middle" href="{% url 'base' %}">
+                            <img src="media/logo.svg" alt="Logo">
+                        </a>
+                    </div>
+                    <div class="col-sm">
+                        <div class="collapse navbar-collapse" id="navbarMenu2">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="menu_link" href="{% url 'contacts' %}">КОНТАКТЫ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.instagram.com/"><img src="media/unnamed.webp"
+                                            alt="Inst" style="width: 25px; height: 25px;"></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://vk.com/"><img src="media/VK.com-logo.svg.png"
+                                            alt="Inst" style="width: 25px; height: 25px;"></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.whatsapp.com/"><img
+                                            src="media/whatsapp-icon-logo.svg" alt="Inst"
+                                            style="width: 25px; height: 25px;"></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://tlgrm.ru/"><img
+                                            src="media/512px-Telegram_logo.svg.png" alt="Inst"
+                                            style="width: 25px; height: 25px;"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false"
+                        aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon "></span>
                     </button>
-                    <div class="collapse navbar-collapse order-md-1" id="navbarMenu">
-                        <ul class="navbar-nav me-auto" >
-                            <li class="nav-item">
-                                <a class="nav-link" id="menu_link" href="{% url 'base' %}">ГЛАВНАЯ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="menu_link" href="{% url 'rings' %}">КОЛЬЦА</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="menu_link" href="{% url 'earrings' %}">СЕРЬГИ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="menu_link" href="{% url 'necklaces' %}">КОЛЬЕ</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="collapse navbar-collapse order-md-3" id="navbarMenu">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" id="menu_link" href="{% url 'contacts' %}">КОНТАКТЫ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://www.instagram.com/"><img src="media/unnamed.webp"
-                                        alt="Inst" style="width: 25px; height: 25px;"></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://vk.com/"><img src="media/VK.com-logo.svg.png"
-                                        alt="Inst" style="width: 25px; height: 25px;"></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://www.whatsapp.com/"><img
-                                        src="media/whatsapp-icon-logo.svg" alt="Inst"
-                                        style="width: 25px; height: 25px;"></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://tlgrm.ru/"><img
-                                        src="media/512px-Telegram_logo.svg.png" alt="Inst"
-                                        style="width: 25px; height: 25px;"></a>
-                            </li>
-                        </ul>
+
                     </div>
                 </div>
             </nav>
