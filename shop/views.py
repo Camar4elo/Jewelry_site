@@ -1,10 +1,13 @@
+from django.db import models
 from django.shortcuts import render
 from django.views.generic.base import View
+from .models import Image
 
 
 class MainView(View):
     def get(self, request):
-        return render(request, "index.html")
+        images = Image.objects.all()
+        return render(request, "base.html", {"image_list": images})
 
 
 class RingsView(View):
