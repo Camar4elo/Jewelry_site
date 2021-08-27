@@ -7,11 +7,11 @@
 }
 
 body {
-    line-height: 1.7;
-    color: rgb(255, 255, 255);
+    line-height: 50px;
     font-weight: 400;
     font-size: 1rem;
     background: rgb(255, 255, 255);
+    position: relative;
 }
 
 .menu {
@@ -20,6 +20,39 @@ body {
 
 .navbar-toggler:focus {
     box-shadow: none;
+}
+
+header {  
+    background-color: rgb(255, 255, 255);  
+    position: fixed;  
+    top: 0;  
+    z-index: 100;  
+    width: 100%;
+    }
+
+.main-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.site_section_top {
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    
+}
+
+#home {
+    height: 100vh;
+    min-height: 500px;
+    z-index: 2;
+    position: relative;
+    background: rgba(0, 0, 0, 0.479);
+}
+
+html {
+    overflow-x: hidden;
+
 }
 
 @font-face {
