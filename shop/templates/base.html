@@ -13,7 +13,6 @@
     <title>Добро пожаловать!</title>
     {% endblock %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#main-navigation" data-bs-offset="0" class="scrolls" tabindex="0">
@@ -51,10 +50,10 @@
         </nav>
     </header>
 
-    <main class="main-content">
+    <main class="main-content" id="fff">
 
         <section class="site_section_top" id='section_main' style="background-image: url('media/images/Test2.jpg')"
-            data-stellar-background-ratio="0.5" id="section-home">
+            data-stellar-background-ratio="0.5">
             <div class="container-fluid">
                 <div class="row justify-content-center align-items-center" id="home">
                     <div class="col-md-7 text-center">
@@ -68,56 +67,49 @@
             </div>
         </section>
 
-        <section class="examples" id="section_1">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <h2 class="text-white mb-5 heading">Примеры работ</h2>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <div class="container-fluid">
-            <section class="row align-items-stretch photos" id="section-photos">
-                <div class="col-12">
-                    <div class="row align-items-stretch">
-                        {% for image in image_list %}
-                        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                            <a href="media/{{ image.name }}" class="d-block photo-item" data-fancybox="gallery">
-                                <img src="media/{{ image.name }}" alt="Image" class="img-fluid">
-                                <div class="photo-text-more">
-                                    <span class="icon icon-search"></span>
-                                </div>
-                            </a>
+            <section class="row align-items-stretch photos" id="section_1">
+                <div class="container-fluid" id="photo_container">
+                    <div class="col-12">
+                        <div class="row align-items-stretch">
+                            {% for image in image_list %}
+                            <div class="col-4 col-md-4 col-lg-2" id="images" data-aos="fade-up" data-aos-delay="100">
+                                <a href="media/{{ image.name }}" class="d-block photo-item" data-fancybox="gallery">
+                                    <img src="media/{{ image.name }}" alt="Image" class="img-fluid">
+                                    <div class="photo-text-more">
+                                        <span class="icon icon-search"></span>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                     </div>
                 </div>
             </section>
-        </div>
-        
-        <section class="materials" id="section_2">
-            <div class="row">
-                <h1>gggggggggggggggggggggggggggggggggggggg</h1>
-            </div>
-        </section>
 
-        <section class="contacts" id="section_3">
-            <div class="container-md">
+
+            <!-- <section class="materials" id="section_2">
                 <div class="row">
-
+                    <h1>gggggggggggggggggggggggggggggggggggggg</h1>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="shipping" id="section_4">
-            <div class="container-md">
-                <div class="row">
+            <section class="contacts" id="section_3">
+                <div class="container-md">
+                    <div class="row">
 
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <section class="shipping" id="section_4">
+                <div class="container-md">
+                    <div class="row">
+
+                    </div>
+                </div>
+            </section>
+        </div> -->
     </main>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
         integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
