@@ -10,12 +10,12 @@
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     {% block title %}
-    <title>Добро пожаловать!</title>
+    <title>Jewelry by Svetlana Remizontseva</title>
     {% endblock %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#main-navigation" data-bs-offset="0" class="scrolls" tabindex="0">
+<body data-bs-spy="scroll" data-bs-target="#main-navigation" data-bs-offset="200">
     {% load static %}
     <header class="menu" data-aos="fade-down" data-aos-duration="1000">
         <nav class="navbar navbar-expand-lg" id="main-navigation">
@@ -28,21 +28,21 @@
                     </span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="nav nav-pills">
                         <li class="nav-item">
                             <a class="nav-link" href="#section_main">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#section_1">Примеры работ</a>
+                            <a class="nav-link" href="#section_work">Примеры работ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#section_2">Материалы</a>
+                            <a class="nav-link" href="#section_materials">Материалы</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#section_3">Контакты</a>
+                            <a class="nav-link" href="#section_contacts">Контакты</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#section_4">Доставка и оплата</a>
+                            <a class="nav-link" href="#section_delivery">Доставка и оплата</a>
                         </li>
                     </ul>
                 </div>
@@ -50,9 +50,9 @@
         </nav>
     </header>
 
-    <main class="main-content" id="fff">
+    <main class="main-content" data-bs-spy="scroll" data-bs-target="#main-navigation">
 
-        <section class="site_section_top" id='section_main' style="background-image: url('media/images/Test2.jpg')"
+        <section class="site_section_top" id="section_main" style="background-image: url('media/images/Test2.jpg')"
             data-stellar-background-ratio="0.5">
             <div class="container-fluid">
                 <div class="row justify-content-center align-items-center" id="home">
@@ -68,11 +68,11 @@
         </section>
 
         <div class="container-fluid">
-            <section class="row align-items-stretch photos" id="section_1">
+            <section class="row align-items-stretch photos" id="section_work">
                 <div class="container-fluid" id="photo_container">
                     <div class="col-12">
                         <div class="row align-items-stretch">
-                            {% for image in image_list %}
+                            {% for image in images_list %}
                             <div class="col-4 col-md-4 col-lg-2" id="images" data-aos="fade-up" data-aos-delay="100">
                                 <a href="media/{{ image.name }}" class="d-block photo-item" data-fancybox="gallery">
                                     <img src="media/{{ image.name }}" alt="Image" class="img-fluid">
@@ -87,14 +87,13 @@
                 </div>
             </section>
 
-
-            <!-- <section class="materials" id="section_2">
+            <!-- <section class="materials" id="section_materials">
                 <div class="row">
                     <h1>gggggggggggggggggggggggggggggggggggggg</h1>
                 </div>
             </section>
 
-            <section class="contacts" id="section_3">
+            <section class="contacts" id="section_contacts">
                 <div class="container-md">
                     <div class="row">
 
@@ -102,14 +101,14 @@
                 </div>
             </section>
 
-            <section class="shipping" id="section_4">
+            <section class="shipping" id="section_delivery">
                 <div class="container-md">
                     <div class="row">
 
                     </div>
                 </div>
-            </section>
-        </div> -->
+            </section> -->
+        </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
         integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
@@ -121,7 +120,6 @@
     <script>
         AOS.init();
     </script>
-
 </body>
 
 </html>
