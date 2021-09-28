@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     {% block title %}
     <title>Jewelry by Svetlana Remizontseva</title>
     {% endblock %}
@@ -59,8 +60,7 @@
                     <div class="col-md-7 text-center">
                         <h1 class="text-white heading text-uppercase" data-aos="fade-up" data-aos-delay="500">Привет
                         </h1>
-                        <p class="lead text-white mb-5" data-aos="fade-up" data-aos-delay="500">Это супер пупер сайт,
-                            шо, как он? Тут можно написать о себе
+                        <p class="lead text-white mb-5" data-aos="fade-up" data-aos-delay="500">Этот тестовая версия сайта
                         </p>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                     <div class="col-12">
                         <div class="row align-items-stretch">
                             {% for image in images_list %}
-                            <div class="col-4 col-md-4 col-lg-2" id="images" data-aos="fade-up" data-aos-delay="100">
+                            <div class="col-4 col-md-4 col-lg-2" id="images" data-aos="fade-up" data-aos-delay={{image.data_aos_delay}}>
                                 <a href="media/{{ image.name }}" class="d-block photo-item" data-fancybox="gallery">
                                     <img src="media/{{ image.name }}" alt="Image" class="img-fluid">
                                     <div class="photo-text-more">
@@ -88,12 +88,12 @@
             </section>
 
             <!-- <section class="materials" id="section_materials">
-                <div class="row">
+                <div class="row" style="color: white;">
                     <h1>gggggggggggggggggggggggggggggggggggggg</h1>
                 </div>
-            </section>
+            </section> -->
 
-            <section class="contacts" id="section_contacts">
+            <!-- <section class="contacts" id="section_contacts">
                 <div class="container-md">
                     <div class="row">
 
@@ -119,6 +119,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
+    </script>
+    <script>
+        $(document).ready(function(){
+            $(this).scrollTop(0);
+        });
     </script>
 </body>
 
