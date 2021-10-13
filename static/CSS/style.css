@@ -3,6 +3,7 @@
 *{
   margin: 0;
   padding: 0;
+  width: 100%;
   box-sizing: border-box;
   font-family: "Roboto" , sans-serif;
 }
@@ -11,15 +12,14 @@
   left: 0;
   top: 0;
   height: 100%;
-  width: 78px;
   background: #000000;
   padding: 6px 14px;
   z-index: 99;
   transition: all 0.5s ease;
-    
-}
-.sidebar.open{
   width: 250px;
+}
+.sidebar.close{
+  width: 78px;
 }
 .sidebar .logo-details{
   height: 60px;
@@ -27,20 +27,15 @@
   align-items: center;
   position: relative;
 }
-.sidebar .logo-details .icon{
-  opacity: 0;
-  transition: all 0.5s ease;
-}
 .sidebar .logo-details .logo_name{
   color: #fff;
   font-size: 20px;
   font-weight: 600;
-  opacity: 0;
+  opacity: 1;
   transition: all 0.5s ease;
 }
-.sidebar.open .logo-details .icon,
-.sidebar.open .logo-details .logo_name{
-  opacity: 1;
+.sidebar.close .logo-details .logo_name{
+  opacity: 0;
 }
 .sidebar .logo-details #btn{
   position: absolute;
@@ -50,24 +45,24 @@
   font-size: 22px;
   transition: all 0.4s ease;
   font-size: 23px;
-  text-align: center;
+  text-align: right;
   cursor: pointer;
   transition: all 0.5s ease;
 }
-.sidebar.open .logo-details #btn{
-  text-align: right;
+.sidebar.close .logo-details #btn{
+  text-align: center;
 }
 .sidebar .logo-details #btn:hover{
   color: #af0b4d;
 }
-.sidebar.open .logo-details #btn:hover{
+/* .sidebar.open .logo-details #btn:hover{
   color: #af0b4d;
-}
+} */
 .sidebar i{
   color: #fff;
   height: 60px;
   min-width: 50px;
-  font-size: 28px;
+  font-size: 25px;
   text-align: center;
   line-height: 60px;
 }
@@ -76,15 +71,16 @@
   height: 100%;
   padding-left: 0px;
 }
+
 .sidebar li{
   position: relative;
   margin: 8px 0;
   list-style: none;
 }
-.sidebar li .tooltip{
+.sidebar.close li .tooltip{
   position: absolute;
   top: -20px;
-  left: calc(100% + 15px);
+  left: calc(100% + 20px);
   z-index: 3;
   background: #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
@@ -97,32 +93,12 @@
   pointer-events: none;
   transition: 0s;
 }
-.sidebar li:hover .tooltip{
+.sidebar.close li:hover .tooltip{
   opacity: 1;
   pointer-events: auto;
   transition: all 0.4s ease;
   top: 50%;
   transform: translateY(-50%);
-}
-.sidebar.open li .tooltip{
-  display: none;
-}
-.sidebar input{
-  font-size: 15px;
-  color: #FFF;
-  font-weight: 400;
-  outline: none;
-  height: 50px;
-  width: 100%;
-  width: 50px;
-  border: none;
-  border-radius: 12px;
-  transition: all 0.5s ease;
-  background: #1d1b31;
-}
-.sidebar.open input{
-  padding: 0 20px 0 50px;
-  width: 100%;
 }
 .sidebar li a{
   display: flex;
@@ -140,12 +116,13 @@
   font-size: 15px;
   font-weight: 400;
   white-space: nowrap;
-  opacity: 0;
   pointer-events: none;
   transition: 0.4s;
-}
-.sidebar.open li a .links_name{
   opacity: 1;
+  pointer-events: auto;
+}
+.sidebar.close li a .links_name{
+  opacity: 0;
   pointer-events: auto;
 }
 .sidebar li a:hover .links_name,
@@ -162,16 +139,16 @@
 .home-section{
   position: relative;
   background: #000000;
-  min-height: 100vh;
+  min-height: 100hv;
   top: 0;
-  left: 78px;
-  width: calc(100% - 78px);
+  left: 250px;
+  width: calc(100% - 250px);
   transition: all 0.5s ease;
   z-index: 2;
 }
-.sidebar.open ~ .home-section{
-  left: 250px;
-  width: calc(100% - 250px);
+.sidebar.close ~ .home-section{
+  left: 78px;
+  width: calc(100% - 78px);
 }
 .home-section .text{
   display: inline-block;
@@ -190,7 +167,7 @@ body {
   line-height: 50px;
   font-weight: 400;
   font-size: 1rem;
-  background: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
   position: relative;
 }
 
@@ -211,5 +188,6 @@ body {
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;
+  
 
 }
