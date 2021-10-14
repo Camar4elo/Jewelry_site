@@ -62,6 +62,7 @@
   color: #fff;
   height: 60px;
   min-width: 50px;
+  max-width: 50px;
   font-size: 25px;
   text-align: center;
   line-height: 60px;
@@ -80,7 +81,7 @@
 .sidebar.close li .tooltip{
   position: absolute;
   top: -20px;
-  left: calc(100% + 20px);
+  left: calc(100% + 17px);
   z-index: 3;
   background: #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
@@ -92,6 +93,7 @@
   white-space: nowrap;
   pointer-events: none;
   transition: 0s;
+  width: auto;
 }
 .sidebar.close li:hover .tooltip{
   opacity: 1;
@@ -130,6 +132,13 @@
   transition: all 0.5s ease;
   color: #af0b4d;
 }
+
+.active {
+  background-color: blue;
+  color: red;
+  transition: .5s ease-out;
+}
+
 .sidebar li i{
   height: 50px;
   line-height: 50px;
@@ -167,7 +176,7 @@ body {
   line-height: 50px;
   font-weight: 400;
   font-size: 1rem;
-  background: rgb(255, 255, 255);
+  background: rgb(0, 0, 0);
   position: relative;
 }
 
@@ -183,11 +192,37 @@ body {
   z-index: 2;
   position: relative;
   background: rgba(0, 0, 0, 0.479);
+  width: auto;
 }
 
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;
-  
+}
 
+#photo_container {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+#pht {
+  margin: 0;
+}
+
+#images {
+  padding-top: 12px;
+  padding-bottom: 12px;
+
+}
+
+.photos {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
