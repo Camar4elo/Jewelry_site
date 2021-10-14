@@ -16,14 +16,14 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#main-navigation" data-bs-offset="200">
+<body>
     {% load static %}
-    <div class="sidebar" data-aos="fade-right" data-aos-duration="1000">
+    <div class="sidebar">
         <div class="logo-details">
             <div class="logo_name">
                 <img src="media\logo01.png" style="width: 150px; height: 150px; margin-top: 70px;">
             </div>
-            <i class='bx bxs-chevron-right-circle' id="btn"></i>
+            <i class='bx bxs-chevron-left-circle' id="btn"></i>
         </div>
         <ul class="nav-list">
             <li>
@@ -64,10 +64,9 @@
         </ul>
     </div>
 
-    <main class="home-section" data-bs-spy="scroll" data-bs-target="#main-navigation">
+    <main class="home-section">
 
-        <section class="site_section_top" id="section_main" style="background-image: url('media/images/Test2.jpg')"
-            data-stellar-background-ratio="0.5">
+        <section class="site_section_top scrollspy" id="section_main" style="background-image: url('media/images/Test4.jpg')">
             <div class="container-fluid">
                 <div class="row justify-content-center align-items-center" id="home">
                     <div class="col-md-7 text-center">
@@ -83,18 +82,15 @@
 
 
 
-        <section class="row align-items-stretch photos" id="section_work">
+        <section class="photos scrollspy" id="section_work">
             <div class="container-fluid" id="photo_container">
-                <div class="col-12">
-                    <div class="row align-items-stretch">
+                <div class="col-12" id="images_columns">
+                    <div class="row align-items-stretch" id="pht">
                         {% for image in images_list %}
                         <div class="col-4 col-md-4 col-lg-2" id="images" data-aos="fade-up"
                             data-aos-delay={{image.data_aos_delay}}>
                             <a href="media/{{ image.name }}" class="d-block photo-item" data-fancybox="gallery">
                                 <img src="media/{{ image.name }}" alt="Image" class="img-fluid">
-                                <div class="photo-text-more">
-                                    <span class="icon icon-search"></span>
-                                </div>
                             </a>
                         </div>
                         {% endfor %}
@@ -109,14 +105,14 @@
         let closeBtn = document.querySelector("#btn");
 
         closeBtn.addEventListener("click", () => {
-            sidebar.classList.toggle("open");
+            sidebar.classList.toggle("close");
             menuBtnChange();//calling the function(optional)
         });
         function menuBtnChange() {
-            if (sidebar.classList.contains("open")) {
-                closeBtn.classList.replace("bxs-chevron-right-circle", "bxs-chevron-left-circle");//replacing the iocns class
-            } else {
+            if (sidebar.classList.contains("close")) {
                 closeBtn.classList.replace("bxs-chevron-left-circle", "bxs-chevron-right-circle");//replacing the iocns class
+            } else {
+                closeBtn.classList.replace("bxs-chevron-right-circle", "bxs-chevron-left-circle");//replacing the iocns class
             }
         }
     </script>
@@ -135,7 +131,6 @@
             $(this).scrollTop(0);
         });
     </script>
-
 </body>
 
 </html>
