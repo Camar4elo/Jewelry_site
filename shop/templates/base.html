@@ -4,112 +4,117 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     {% block title %}
     <title>Jewelry by Svetlana Remizontseva</title>
     {% endblock %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#main-navigation" data-bs-offset="200">
+<body>
     {% load static %}
-    <header class="menu" data-aos="fade-down" data-aos-duration="1000">
-        <nav class="navbar navbar-expand-lg" id="main-navigation">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'base' %}">Логотип</a>
-                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span>
-                        <img src="media\SVG\190-menu.svg" class="main-icon">
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#section_main">Главная</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#section_work">Примеры работ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#section_materials">Материалы</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#section_contacts">Контакты</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#section_delivery">Доставка и оплата</a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="sidebar" data-aos="fade-right" data-aos-duration="1000">
+        <div class="logo-details">
+            <div class="logo_name">
+                <img src="media\logo01.png" style="width: 150px; height: 150px; margin-top: 70px;">
             </div>
-        </nav>
-    </header>
+            <i class='bx bxs-chevron-left-circle' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="#section_main">
+                    <i class='bx bxs-home'></i>
+                    <span class="links_name">Главная</span>
+                </a>
+                <span class="tooltip">Главная</span>
+            </li>
+            <li>
+                <a href="#section_work">
+                    <i class='bx bx-images'></i>
+                    <span class="links_name">Примеры работ</span>
+                </a>
+                <span class="tooltip">Примеры работ</span>
+            </li>
+            <li>
+                <a href="#section_materials">
+                    <i class='bx bxs-diamond'></i>
+                    <span class="links_name">Материалы</span>
+                </a>
+                <span class="tooltip">Материалы</span>
+            </li>
+            <li>
+                <a href="#section_contacts">
+                    <i class='bx bxs-phone'></i>
+                    <span class="links_name">Контакты</span>
+                </a>
+                <span class="tooltip">Контакты</span>
+            </li>
+            <li>
+                <a href="#section_delivery">
+                    <i class='bx bxs-truck'></i>
+                    <span class="links_name">Доставка и оплата</span>
+                </a>
+                <span class="tooltip">Доставка и оплата</span>
+            </li>
+        </ul>
+    </div>
 
-    <main class="main-content" data-bs-spy="scroll" data-bs-target="#main-navigation">
+    <main class="home-section">
 
-        <section class="site_section_top" id="section_main" style="background-image: url('media/images/Test2.jpg')"
-            data-stellar-background-ratio="0.5">
+        <section class="site_section_top scrollspy" id="section_main"
+            style="background-image: url('media/images/Test4.jpg')">
             <div class="container-fluid">
                 <div class="row justify-content-center align-items-center" id="home">
                     <div class="col-md-7 text-center">
                         <h1 class="text-white heading text-uppercase" data-aos="fade-up" data-aos-delay="500">Привет
                         </h1>
-                        <p class="lead text-white mb-5" data-aos="fade-up" data-aos-delay="500">Этот тестовая версия сайта
+                        <p class="lead text-white mb-5" data-aos="fade-up" data-aos-delay="500">Этот тестовая версия
+                            сайта
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="container-fluid">
-            <section class="row align-items-stretch photos" id="section_work">
-                <div class="container-fluid" id="photo_container">
-                    <div class="col-12">
-                        <div class="row align-items-stretch">
-                            {% for image in images_list %}
-                            <div class="col-4 col-md-4 col-lg-2" id="images" data-aos="fade-up" data-aos-delay={{image.data_aos_delay}}>
-                                <a href="media/{{ image.name }}" class="d-block photo-item" data-fancybox="gallery">
-                                    <img src="media/{{ image.name }}" alt="Image" class="img-fluid">
-                                    <div class="photo-text-more">
-                                        <span class="icon icon-search"></span>
-                                    </div>
-                                </a>
-                            </div>
-                            {% endfor %}
+        <section class="photos scrollspy" id="section_work">
+            <div class="container-fluid" id="photo_container">
+                <div class="col-12" id="images_columns">
+                    <div class="row align-items-stretch" id="pht">
+                        {% for image in images_list %}
+                        <div class="col-4 col-md-4 col-lg-2" id="images" data-aos="fade-up"
+                            data-aos-delay={{image.data_aos_delay}}>
+                            <a href="media/{{ image.name }}" class="d-block photo-item" data-fancybox="gallery">
+                                <img src="media/{{ image.name }}" alt="Image" class="img-fluid">
+                            </a>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- <section class="materials" id="section_materials">
-                <div class="row" style="color: white;">
-                    <h1>gggggggggggggggggggggggggggggggggggggg</h1>
-                </div>
-            </section> -->
-
-            <!-- <section class="contacts" id="section_contacts">
-                <div class="container-md">
-                    <div class="row">
-
-                    </div>
-                </div>
-            </section>
-
-            <section class="shipping" id="section_delivery">
-                <div class="container-md">
-                    <div class="row">
-
-                    </div>
-                </div>
-            </section> -->
-        </div>
     </main>
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
+
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+            menuBtnChange();//calling the function(optional)
+        });
+        function menuBtnChange() {
+            if (sidebar.classList.contains("close")) {
+                closeBtn.classList.replace("bxs-chevron-left-circle", "bxs-chevron-right-circle");//replacing the iocns class
+            } else {
+                closeBtn.classList.replace("bxs-chevron-right-circle", "bxs-chevron-left-circle");//replacing the iocns class
+            }
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
         integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
         crossorigin="anonymous"></script>
@@ -121,7 +126,7 @@
         AOS.init();
     </script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             $(this).scrollTop(0);
         });
     </script>
