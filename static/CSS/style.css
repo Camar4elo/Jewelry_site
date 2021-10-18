@@ -127,16 +127,10 @@
   opacity: 0;
   pointer-events: auto;
 }
-.sidebar li a:hover .links_name,
-.sidebar li a:hover i{
+.sidebar li a.active .links_name,
+.sidebar li a:hover .links_name{
   transition: all 0.5s ease;
   color: #af0b4d;
-}
-
-.active {
-  background-color: blue;
-  color: red;
-  transition: .5s ease-out;
 }
 
 .sidebar li i{
@@ -145,6 +139,13 @@
   font-size: 18px;
   border-radius: 12px;
 }
+
+.sidebar li a.active i,
+.sidebar li a:hover i{
+  transition: all 0.5s ease;
+  color: #af0b4d;
+}
+
 .home-section{
   position: relative;
   background: #000000;
