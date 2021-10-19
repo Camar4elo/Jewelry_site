@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.safestring import mark_safe
+from django_resized import ResizedImageField
 
 
 class Material(models.Model):
@@ -39,12 +40,12 @@ class Gem(models.Model):
         return self.name
 
 
-class Image(models.Model):
-    def set_file_directory(instance, filename):
-        return (f'{instance.decoration.category}/'
-                f'{instance.decoration.name}/{filename}')
+class Photo(models.Model):
+    def set_file_directory(self, filename):
+        return (f'{self.decoration.category}/'
+                f'{self.decoration.name}/{filename}')
 
-    name = models.ImageField(upload_to=set_file_directory,
+    name = ResizedImageField(size=[900, 900], upload_to=set_file_directory,
                              verbose_name='Изображение',
                              blank=True, null=True)
     decoration = models.ForeignKey('Decoration', on_delete=models.CASCADE,
@@ -56,7 +57,7 @@ class Image(models.Model):
         verbose_name_plural = 'Изображения'
 
     def __str__(self):
-        return self.name.path
+        return f'Path: {self.name.path}'
 
     def display_image(self):
         return mark_safe(f'<img src="{self.name.url}"width="100" height="100"')
@@ -66,7 +67,7 @@ class Image(models.Model):
     def delete(self, *args, **kwargs):
         storage = self.name.storage
         path = self.name.path
-        super(Image, self).delete(*args, **kwargs)
+        super(Photo, self).delete(*args, **kwargs)
         storage.delete(path)
 
 
