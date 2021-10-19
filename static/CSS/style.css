@@ -55,9 +55,7 @@
 .sidebar .logo-details #btn:hover{
   color: #af0b4d;
 }
-/* .sidebar.open .logo-details #btn:hover{
-  color: #af0b4d;
-} */
+
 .sidebar i{
   color: #fff;
   height: 60px;
@@ -69,11 +67,10 @@
 }
 .sidebar .nav-list{
   margin-top: 70px;
-  height: 100%;
   padding-left: 0px;
 }
 
-.sidebar li{
+.sidebar .nav-list li{
   position: relative;
   margin: 8px 0;
   list-style: none;
@@ -167,7 +164,7 @@
   font-weight: 500;
   margin: 18px
 }
-@media (max-width: 420px) {
+@media (max-width: 320px) {
   .sidebar li .tooltip{
     display: none;
   }
@@ -226,4 +223,27 @@ html {
   padding-bottom: 12px;
   padding-left: 12px;
   padding-right: 12px;
+}
+
+.social-list {
+  padding-top: 20px;
+  padding-left: 0;
+}
+
+.sidebar .social-list li {
+  display: inline-block;
+  list-style: none;
+  max-width: 50px;
+}
+
+.sidebar.close .social-list li {
+  opacity: 0;
+}
+
+.img-fluid {
+  transition: 0.3s;
+}
+
+.img-fluid:hover {
+  transform: scale(1.15);
 }
