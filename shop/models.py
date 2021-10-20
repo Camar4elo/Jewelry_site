@@ -64,12 +64,6 @@ class Photo(models.Model):
 
     display_image.short_description = 'Изображение'
 
-    def delete(self, *args, **kwargs):
-        storage = self.name.storage
-        path = self.name.path
-        super(Photo, self).delete(*args, **kwargs)
-        storage.delete(path)
-
 
 class Decoration(models.Model):
     name = models.CharField(max_length=250, verbose_name='Название изделия',
@@ -113,3 +107,22 @@ class Decoration(models.Model):
         except (AttributeError, ValueError):
             return None
     display_images.short_description = 'Изображение'
+
+
+class MainPhoto(models.Model):
+    main_photo = ResizedImageField(size=[1200, 900],
+                                   upload_to='main_photo',
+                                   verbose_name='Главное фото',
+                                   blank=True, null=True)
+
+    def __str__(self):
+        return f'Path: {self.main_photo.path}'
+
+    def display_image(self):
+        return mark_safe(f'<img src="{self.main_photo.url}'
+                         f'"width="750" height="500"')
+    display_image.short_description = 'Главное фото'
+
+    class Meta:
+        verbose_name = 'Главное фото сайта'
+        verbose_name_plural = 'Главное фото'
