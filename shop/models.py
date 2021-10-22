@@ -57,7 +57,7 @@ class Photo(models.Model):
         verbose_name_plural = 'Изображения'
 
     def __str__(self):
-        return f'Path: {self.name.path}'
+        return self.name.path
 
     def display_image(self):
         return mark_safe(f'<img src="{self.name.url}"width="100" height="100"')
@@ -114,6 +114,8 @@ class MainPhoto(models.Model):
                                    upload_to='main_photo',
                                    verbose_name='Главное фото',
                                    blank=True, null=True)
+    greetings = models.TextField(max_length=500, verbose_name='Приветствие',
+                                 null=True, blank=True)
 
     def __str__(self):
         return f'Path: {self.main_photo.path}'
@@ -124,5 +126,5 @@ class MainPhoto(models.Model):
     display_image.short_description = 'Главное фото'
 
     class Meta:
-        verbose_name = 'Главное фото сайта'
-        verbose_name_plural = 'Главное фото'
+        verbose_name = 'Главное фото сайта и приветствие'
+        verbose_name_plural = 'Главное фото сайта и приветствие'

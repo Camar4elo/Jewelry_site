@@ -39,4 +39,4 @@ class PhotoAdmin(admin.ModelAdmin):
 
 @admin.register(MainPhoto)
 class MainPhotoAdmin(admin.ModelAdmin):
-    list_display = ['main_photo', 'display_image']
+    list_display = ['greetings', 'main_photo', 'display_image']
