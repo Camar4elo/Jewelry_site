@@ -1,5 +1,5 @@
 from django.contrib import admin
-from shop.models import Material, Category, Decoration, Gem, Photo, MainPhoto
+from shop.models import Material, Category, Decoration, Gem, Photo, MainPhoto, SocialNetwork
 
 
 class PhotoAdmin(admin.StackedInline):
@@ -40,3 +40,8 @@ class PhotoAdmin(admin.ModelAdmin):
 @admin.register(MainPhoto)
 class MainPhotoAdmin(admin.ModelAdmin):
     list_display = ['greetings', 'main_photo', 'display_image']
+
+
+@admin.register(SocialNetwork)
+class SocialNetworkAdmin(admin.ModelAdmin):
+    list_display = ['name', 'link']

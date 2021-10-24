@@ -128,3 +128,17 @@ class MainPhoto(models.Model):
     class Meta:
         verbose_name = 'Главное фото сайта и приветствие'
         verbose_name_plural = 'Главное фото сайта и приветствие'
+
+
+class SocialNetwork(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Название соцсети',
+                            unique=True)
+    link = models.CharField(max_length=200, verbose_name='Ссылка на аккаунт',
+                            unique=True)
+
+    def __str__(self):
+        return f'name: {self.name}, link: {self.link}'
+
+    class Meta:
+        verbose_name = 'Соцсеть'
+        verbose_name_plural = 'Соцсети'
