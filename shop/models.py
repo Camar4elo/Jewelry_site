@@ -6,6 +6,8 @@ from django_resized import ResizedImageField
 class Material(models.Model):
     name = models.CharField(max_length=30, verbose_name='Материал изделия',
                             unique=True)
+    description = models.TextField(max_length=1000, verbose_name='Описание',
+                                   null=True)
 
     class Meta:
         verbose_name = 'Материал'
@@ -31,6 +33,8 @@ class Category(models.Model):
 class Gem(models.Model):
     name = models.CharField(max_length=30, verbose_name='Драгоценный камень',
                             unique=True)
+    description = models.TextField(max_length=1000, verbose_name='Описание',
+                                   null=True)
 
     class Meta:
         verbose_name = 'Драгоценный камень'

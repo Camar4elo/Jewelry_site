@@ -23,12 +23,12 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Material)
 class MaterialAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name', 'description']
 
 
 @admin.register(Gem)
 class GemsAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name', 'description']
 
 
 @admin.register(Photo)
