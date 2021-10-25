@@ -247,3 +247,10 @@ html {
 .img-fluid:hover {
   transform: scale(1.15);
 }
+
+.jewel-category {
+  text-align: center;
+  color: #fff;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
