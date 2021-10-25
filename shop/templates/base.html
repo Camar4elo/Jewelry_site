@@ -11,6 +11,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <link  href="{% static 'lightbox/lightbox.css' %}" rel="stylesheet">
+
     {% block title %}
     <title>Jewelry by Svetlana Remizontseva</title>
     {% endblock %}
@@ -22,7 +25,7 @@
     <div class="sidebar" data-aos="fade-right" data-aos-duration="1000">
         <div class="logo-details">
             <div class="logo_name">
-                <img src="media\logo01.png" style="width: 150px; height: 150px; margin-top: 70px;">
+                <img src="media/logo01.png" style="width: 150px; height: 150px; margin-top: 70px;">
             </div>
             <i class='bx bxs-chevron-left-circle' id="btn"></i>
         </div>
@@ -90,13 +93,15 @@
 
     <main class="home-section">
 
-        <section class="site_section_top" id="section_main" style="background-image: url('media/{{photo_and_greetings.main_photo}}')">
+        <section class="site_section_top" id="section_main"
+            style="background-image: url('media/{{photo_and_greetings.main_photo}}')">
             <div class="container-fluid">
                 <div class="row justify-content-center align-items-center" id="home">
                     <div class="col-md-7 text-center">
                         <h1 class="text-white heading text-uppercase" data-aos="fade-up" data-aos-delay="500">Привет
                         </h1>
-                        <p class="lead text-white mb-5" data-aos="fade-up" data-aos-delay="500">{{photo_and_greetings.greetings}}
+                        <p class="lead text-white mb-5" data-aos="fade-up" data-aos-delay="500">
+                            {{photo_and_greetings.greetings}}
                         </p>
                     </div>
                 </div>
@@ -107,13 +112,18 @@
             <div class="container-fluid" id="photo_container">
                 <div class="col-12" id="images_columns">
                     <div class="row align-items-stretch" id="pht">
+                        {% for category in category_list %}
+                        <h1 class="jewel-category text-uppercase" data-aos="flip-down" data-aos-delay="300">{{category}}</h1>
                         {% for image in images_list %}
+                        {% if category == image.category %}
                         <div class="col-4 col-md-4 col-lg-2" id="images" data-aos="fade-up"
                             data-aos-delay={{image.data_aos_delay}}>
-                            <a href="media/{{ image.name }}" class="d-block photo-item" data-fancybox="gallery">
+                            <a href="media/{{ image.name }}" class="d-block photo-item" data-lightbox="{{ category }}" data-title="{{ image.decoration_name }}">
                                 <img src="media/{{ image.name }}" alt="Image" class="img-fluid">
                             </a>
                         </div>
+                        {% endif %}
+                        {% endfor %}
                         {% endfor %}
                     </div>
                 </div>
@@ -166,6 +176,16 @@
     <script>
         AOS.init();
     </script>
+    <script src="{% static 'lightbox/lightbox.js' %}"></script>
+    <script>
+        lightbox.option({
+          'resizeDuration': 100,
+          'wrapAround': true,
+          'alwaysShowNavOnTouchDevices': true,
+          'fadeDuration': 300,
+          'imageFadeDuration': 300,
+        })
+    </script>
     <script>
         let section = document.querySelectorAll('section');
         let sidebarLinks = document.querySelectorAll('.sidebar li a');
@@ -190,7 +210,7 @@
     </script>
     <script>
         let detect = new MobileDetect(window.navigator.userAgent);
-        let menuButton = document.querySelector("#btn")
+        let menuButton = document.querySelector("#btn");
 
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
             menuButton.classList.replace("bxs-chevron-left-circle", "bxs-chevron-right-circle");
