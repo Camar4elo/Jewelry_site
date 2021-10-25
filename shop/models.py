@@ -8,6 +8,9 @@ class Material(models.Model):
                             unique=True)
     description = models.TextField(max_length=1000, verbose_name='Описание',
                                    null=True)
+    photo = ResizedImageField(size=[900, 900], upload_to='materials_photo',
+                              verbose_name='Изображение',
+                              blank=True, null=True)
 
     class Meta:
         verbose_name = 'Материал'
@@ -15,6 +18,14 @@ class Material(models.Model):
 
     def __str__(self):
         return self.name
+
+    def display_image(self):
+        try:
+            return mark_safe(f'<img src="{self.photo.url}'
+                             f'"width="100" height="100"')
+        except (AttributeError, ValueError):
+            return None
+    display_image.short_description = 'Изображение'
 
 
 class Category(models.Model):
@@ -35,6 +46,9 @@ class Gem(models.Model):
                             unique=True)
     description = models.TextField(max_length=1000, verbose_name='Описание',
                                    null=True)
+    photo = ResizedImageField(size=[900, 900], upload_to='gems_photo',
+                              verbose_name='Изображение',
+                              blank=True, null=True)
 
     class Meta:
         verbose_name = 'Драгоценный камень'
@@ -42,6 +56,14 @@ class Gem(models.Model):
 
     def __str__(self):
         return self.name
+
+    def display_image(self):
+        try:
+            return mark_safe(f'<img src="{self.photo.url}'
+                             f'"width="100" height="100"')
+        except (AttributeError, ValueError):
+            return None
+    display_image.short_description = 'Изображение'
 
 
 class Photo(models.Model):
@@ -125,8 +147,11 @@ class MainPhoto(models.Model):
         return f'Path: {self.main_photo.path}'
 
     def display_image(self):
-        return mark_safe(f'<img src="{self.main_photo.url}'
-                         f'"width="750" height="500"')
+        try:
+            return mark_safe(f'<img src="{self.main_photo.url}'
+                             f'"width="750" height="500"')
+        except (AttributeError, ValueError):
+            return None
     display_image.short_description = 'Главное фото'
 
     class Meta:
