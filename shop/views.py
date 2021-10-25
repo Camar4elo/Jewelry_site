@@ -26,17 +26,19 @@ class MainView(View):
 def create_images_list(category):
     images_list = []
     for category_name in category:
-        decoration = Decoration.objects.filter(category_id=category_name.
-                                               id).get()
-        images = Photo.objects.filter(decoration_id=decoration.id)
-        data_aos_delay = 0
-        for image in images:
-            if data_aos_delay == 600:
-                data_aos_delay = 0
-            data_aos_delay += 100
-            images_list.append({"category": category_name.name,
-                                "name": image.name, "data_aos_delay":
-                                str(data_aos_delay)})
+        decorations = Decoration.objects.filter(category_id=category_name.
+                                                id).all()
+        for decoration in decorations:
+            images = Photo.objects.filter(decoration_id=decoration.id)
+            data_aos_delay = 0
+            for image in images:
+                if data_aos_delay == 600:
+                    data_aos_delay = 0
+                data_aos_delay += 100
+                images_list.append({"category": category_name.name,
+                                    "name": image.name, "data_aos_delay":
+                                    str(data_aos_delay),
+                                    "decoration_name": decoration.name})
     return images_list
 
 
