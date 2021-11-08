@@ -25,7 +25,7 @@
     <div class="sidebar" data-aos="fade-right" data-aos-duration="1000">
         <div class="logo-details">
             <div class="logo_name">
-                <img src="media/logo01.png" style="width: 150px; height: 150px; margin-top: 70px;">
+                <img src="media/Logo.jpg" style="width: 200px; height: 200px; margin-top: 70px;">
             </div>
             <i class='bx bxs-chevron-left-circle' id="btn"></i>
         </div>
@@ -138,7 +138,19 @@
 
         <section id="section_contacts" style="margin-bottom: 1000px;">
             <div class="container-fluid">
-                <h3>Section contacts</h3>
+                <h3 style="color: white; text-align: center;">Свяжитесь со мной</h3>
+                <div class="form" style="color: white;">
+                    <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form.name.label }}
+                    {{ form.name }}
+                    {{ form.phone_number.label}}
+                    {{ form.phone_number }}
+                    {{ form.message.label }}
+                    {{ form.message }}<br>
+                    <input type="submit" value="Отправить" />
+                    </form>
+                </div>
             </div>
         </section>
 
