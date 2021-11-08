@@ -131,3 +131,4 @@ dmypy.json
 settings.py
 .vscode
 media/
+bot_settings.py
