@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from .models import Photo, MainPhoto, Category, SocialNetwork, Decoration
+from .forms import ContactMe
+from bot.bot import send_visitor_message
 
 
 class MainView(View):
@@ -13,6 +15,7 @@ class MainView(View):
         category = Category.objects.all()
         images_list = create_images_list(category)
         category_list = create_category_list(category)
+        form = ContactMe(request.GET)
         return render(request, "base.html",
                       {"images_list": images_list,
                        "category_list": category_list,
@@ -20,7 +23,18 @@ class MainView(View):
                        "social_link_instagram": social_link_instagram.link,
                        "social_link_whatsapp": social_link_whatsapp.link,
                        "social_link_telegram": social_link_telegram.link,
-                       "social_link_vk": social_link_vk.link})
+                       "social_link_vk": social_link_vk.link,
+                       "form": form})
+
+    def post(self, request):
+        form = ContactMe(request.POST)
+        if form.is_valid():
+            name = form.data['name']
+            phone = form.data['phone_number']
+            message = form.data['message']
+            bot_message = f'Имя: {name}\nТелефон: {phone}\nСообщение: {message}'
+            send_visitor_message(bot_message)
+            return redirect("base")
 
 
 def create_images_list(category):
