@@ -206,7 +206,7 @@ body {
   min-height: 500px;
   z-index: 2;
   position: relative;
-  background: rgba(0, 0, 0, 0.479);
+  background: rgba(0, 0, 0, 0.750);
   width: auto;
 }
 
@@ -226,7 +226,9 @@ html {
 }
 
 #pht {
-  margin: 0;
+  border-top: 3px solid rgb(0, 0, 0);
+  border-width: 100%;
+  margin: auto;
 }
 
 #images {
@@ -266,8 +268,128 @@ html {
 }
 
 .jewel-category {
-  text-align: center;
+  text-align: left;
   color: #fff;
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.form {
+  color: #fff;
+  line-height: 30px;
+  padding-left: 10%;
+  padding-right: 10%;
+  }
+
+.form .button{
+  width: 100px;
+}
+
+.contact-form {
+  outline: none;
+  border-color: #000000;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.568);
+  margin-bottom: 20px;
+}
+
+.contact-form:hover {
+  outline: none;
+  border-color: #000000;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  border-bottom: 2px solid rgb(255, 255, 255);
+  margin-bottom: 20px;
+}
+
+.site_section_top p{
+  color: #fff;
+  line-height: 30px;
+}
+
+#section_materials{
+  color: #fff;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+#section_materials h2{
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+#section_materials p{
+  line-height: 30px;
+}
+
+#section_work{
+  color: #fff;
+  background-color: rgb(17, 17, 17);
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+#section_work h2{
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+#section_contacts{
+  color: #fff;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+#contact_form{
+  width: auto;
+}
+
+#section_contacts h2{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#section_delivery{
+  color: #fff;
+  background-color: rgb(17, 17, 17);
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+#section_delivery h2{
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+#materials_row {
+  text-align: left;
+}
+
+.materials {
+  padding-left: 40%;
+  list-style-image: url('/static/icons/Tick_Mark_icon-icons.com_69146.svg');
+}
+
+.materials li {
+  height: 50px;
+}
+
+.materials li::marker{
+  font-size: 36px;
+  height: 50px;
+}
+
+.gems {
+  padding-left: 40%;
+  list-style-image: url('/static/icons/Tick_Mark_icon-icons.com_69146.svg');
+}
+
+.gems li {
+  height: 50px;
+}
+
+.gems li::marker{
+  font-size: 36px;
+  height: 50px;
 }
