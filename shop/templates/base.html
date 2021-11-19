@@ -11,9 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-
-    <link  href="{% static 'lightbox/lightbox.css' %}" rel="stylesheet">
-
+    <link href="{% static 'lightbox/lightbox.css' %}" rel="stylesheet">
     {% block title %}
     <title>Jewelry by Svetlana Remizontseva</title>
     {% endblock %}
@@ -98,9 +96,9 @@
             <div class="container-fluid">
                 <div class="row justify-content-center align-items-center" id="home">
                     <div class="col-md-7 text-center">
-                        <h1 class="text-white heading text-uppercase" data-aos="fade-up" data-aos-delay="500">Привет
+                        <h1 class="text-white heading text-uppercase" data-aos="fade-up" data-aos-delay="450">Привет
                         </h1>
-                        <p class="lead text-white mb-5" data-aos="fade-up" data-aos-delay="500">
+                        <p data-aos="fade-up" data-aos-delay="500">
                             {{photo_and_greetings.greetings}}
                         </p>
                     </div>
@@ -110,53 +108,93 @@
 
         <section id="section_materials">
             <div class="container-fluid">
-                <h3>Section materials</h3>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-md-7 text-center">
+                        <h2 data-aos="fade-up" data-aos-delay="450">Материалы</h2>
+                        <p data-aos="fade-up" data-aos-delay="500">Вся продукция изготавливается из высококачественных
+                            драгоценных металлов и камней. Здесь вы можете ознакомиться с материалами, которые
+                            я использую в изготовлении ювелирных изделий. Если вы хотите использовать в изготовлении
+                            материалы не представленные здесь,
+                            то вы всегда можете со мной связаться и мы с вами обсудим ваши идеи.
+                        </p>
+                        <div class="row" id="materials_row">
+                            <div class="col-md-6">
+                                <ul class="materials ">
+                                    {% for material in materials %}
+                                    <li>
+                                        {{ material.name }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="gems">
+                                    {% for gem in gems %}
+                                    <li>
+                                        {{ gem.name }}
+                                    </li>    
+                                    {% endfor %}    
+                                </ul>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="photos" id="section_work">
             <div class="container-fluid" id="photo_container">
+                <h2 data-aos="fade-up" data-aos-delay="450">Примеры работ</h2>
                 <div class="col-12" id="images_columns">
+                    {% for category in category_list %}
                     <div class="row align-items-stretch" id="pht">
-                        {% for category in category_list %}
-                        <h1 class="jewel-category text-uppercase" data-aos="flip-down" data-aos-delay="300">{{category}}</h1>
+                        <h3 class="jewel-category" data-aos="fade-up" data-aos-delay="500">{{category}}</h3>
                         {% for image in images_list %}
                         {% if category == image.category %}
                         <div class="col-4 col-md-4 col-lg-2" id="images" data-aos="fade-up"
                             data-aos-delay={{image.data_aos_delay}}>
-                            <a href="media/{{ image.name }}" class="d-block photo-item" data-lightbox="{{ category }}" data-title="{{ image.decoration_name }}">
+                            <a href="media/{{ image.name }}" class="d-block photo-item" data-lightbox="{{ category }}"
+                                data-title="{{ image.decoration_name }}">
                                 <img src="media/{{ image.name }}" alt="Image" class="img-fluid">
                             </a>
                         </div>
                         {% endif %}
                         {% endfor %}
-                        {% endfor %}
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
 
         <section id="section_contacts">
             <div class="container-fluid">
-                <h3 style="color: white; text-align: center;">Свяжитесь со мной</h3>
-                <div class="form" style="color: white;">
-                    <form action="" method="post">
-                    {% csrf_token %}
-                    {{ form.name.label }}
-                    {{ form.name }}
-                    {{ form.phone_number.label}}
-                    {{ form.phone_number }}
-                    {{ form.message.label }}
-                    {{ form.message }}<br>
-                    <input type="submit" value="Отправить" />
-                    </form>
+                <div class="row justify-content-center align-items-center" id="contact_form">
+                    <h2 data-aos="fade-up" data-aos-delay="450">Свяжитесь со мной</h2>
+                    <div class="form col-md-7 text-left">
+                        <form action="" method="post" data-aos="fade-up" data-aos-delay="500">
+                            {% csrf_token %}
+                            {{ form.name.label }}
+                            {{ form.name }}
+                            {{ form.phone_number.label}}
+                            {{ form.phone_number }}
+                            {{ form.message.label }}
+                            {{ form.message }}<br>
+                            <input class="button" type="submit" value="Отправить">
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="section_delivery" style="margin-bottom: 2000px;">
+        <section id="section_delivery">
             <div class="container-fluid">
-                <h3>Section delivery</h3>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-md-7 text-center">
+                        <h2 data-aos="fade-up" data-aos-delay="450">Доставка и оплата</h2>
+                        <p data-aos="fade-up" data-aos-delay="500">Доставка осуществляется до постоматов pickpoint</p>
+                        <p data-aos="fade-up" data-aos-delay="500">Оплата принимается по реквизитам, переводом по номеру карты или СБП</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -191,11 +229,11 @@
     <script src="{% static 'lightbox/lightbox.js' %}"></script>
     <script>
         lightbox.option({
-          'resizeDuration': 100,
-          'wrapAround': true,
-          'alwaysShowNavOnTouchDevices': true,
-          'fadeDuration': 300,
-          'imageFadeDuration': 300,
+            'resizeDuration': 100,
+            'wrapAround': true,
+            'alwaysShowNavOnTouchDevices': true,
+            'fadeDuration': 300,
+            'imageFadeDuration': 300,
         })
     </script>
     <script>
