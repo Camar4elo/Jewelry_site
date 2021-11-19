@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
-from .models import Photo, MainPhoto, Category, SocialNetwork, Decoration
+from .models import Photo, MainPhoto, Category, SocialNetwork, Decoration, Material, Gem
 from .forms import ContactMe
 from bot.bot import send_visitor_message
 
@@ -15,6 +15,8 @@ class MainView(View):
         category = Category.objects.all()
         images_list = create_images_list(category)
         category_list = create_category_list(category)
+        materials = Material.objects.values('name')
+        gems = Gem.objects.values('name')
         form = ContactMe(request.GET)
         return render(request, "base.html",
                       {"images_list": images_list,
@@ -24,7 +26,9 @@ class MainView(View):
                        "social_link_whatsapp": social_link_whatsapp.link,
                        "social_link_telegram": social_link_telegram.link,
                        "social_link_vk": social_link_vk.link,
-                       "form": form})
+                       "form": form,
+                       "materials": materials,
+                       "gems": gems})
 
     def post(self, request):
         form = ContactMe(request.POST)
