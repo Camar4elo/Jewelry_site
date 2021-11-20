@@ -77,12 +77,7 @@
             </li>
             <li>
                 <a href="{{social_link_telegram}}" target="_blank">
-                    <i class='bx bxl-telegram'></i>
-                </a>
-            </li>
-            <li>
-                <a href="{{social_link_vk}}" target="_blank">
-                    <i class='bx bxl-vk'></i>
+                    <i class='bx bxl-facebook-square'></i>
                 </a>
             </li>
         </ul>
@@ -121,7 +116,7 @@
                             <div class="col-md-6">
                                 <ul class="materials ">
                                     {% for material in materials %}
-                                    <li>
+                                    <li data-aos="fade-up" data-aos-delay="550">
                                         {{ material.name }}
                                     </li>
                                     {% endfor %}
@@ -130,13 +125,13 @@
                             <div class="col-md-6">
                                 <ul class="gems">
                                     {% for gem in gems %}
-                                    <li>
+                                    <li data-aos="fade-up" data-aos-delay="550">
                                         {{ gem.name }}
-                                    </li>    
-                                    {% endfor %}    
+                                    </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
-                        </div>    
+                        </div>
                     </div>
                 </div>
             </div>
@@ -169,7 +164,32 @@
         <section id="section_contacts">
             <div class="container-fluid">
                 <div class="row justify-content-center align-items-center" id="contact_form">
-                    <h2 data-aos="fade-up" data-aos-delay="450">Свяжитесь со мной</h2>
+                    <h2 data-aos="fade-up" data-aos-delay="450">Контакты</h2>
+                    <div class="col-md-7 text-center contact_me-social">
+                        <p data-aos="fade-up" data-aos-delay="500">Связаться со мной вы можете в социальных сетях
+                            по ссылкам ниже или через форму прямо на сайте.
+                        </p>
+                        <ul class="contacts-social" data-aos="fade-up" data-aos-delay="500">
+                            <li class="social_name">
+                                <a href="{{social_link_instagram}}" target="_blank">
+                                    <i class='bx bxl-instagram-alt'></i>
+                                    <span class="social_name">Instagram</span>
+                                </a>
+                            </li>
+                            <li class="social_name">
+                                <a href="{{social_link_whatsapp}}" target="_blank">
+                                    <i class='bx bxl-whatsapp'></i>
+                                    <span class="social_name">Whatsapp</span>
+                                </a>
+                            </li>
+                            <li class="social_name">
+                                <a href="{{social_link_telegram}}" target="_blank">
+                                    <i class='bx bxl-facebook-square'></i>
+                                    <span class="social_name">Facebook</span>
+                                </a>
+                            </li>
+                        </ul>                
+                    </div>
                     <div class="form col-md-7 text-left">
                         <form action="" method="post" data-aos="fade-up" data-aos-delay="500">
                             {% csrf_token %}
@@ -183,7 +203,6 @@
                         </form>
                     </div>
                 </div>
-            </div>
         </section>
 
         <section id="section_delivery">
@@ -192,7 +211,8 @@
                     <div class="col-md-7 text-center">
                         <h2 data-aos="fade-up" data-aos-delay="450">Доставка и оплата</h2>
                         <p data-aos="fade-up" data-aos-delay="500">Доставка осуществляется до постоматов pickpoint</p>
-                        <p data-aos="fade-up" data-aos-delay="500">Оплата принимается по реквизитам, переводом по номеру карты или СБП</p>
+                        <p data-aos="fade-up" data-aos-delay="500">Оплата принимается по реквизитам, переводом по номеру
+                            карты или СБП</p>
                     </div>
                 </div>
             </div>
