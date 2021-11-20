@@ -53,7 +53,7 @@
   text-align: center;
 }
 .sidebar .logo-details #btn:hover{
-  color: #af0b4d;
+  color: #a646e2;
 }
 
 @media (pointer:coarse) {
@@ -138,7 +138,7 @@
 .sidebar li a.active .links_name,
 .sidebar li a:hover .links_name{
   transition: all 0.5s ease;
-  color: #af0b4d;
+  color: #a646e2;
 }
 @media (pointer:coarse) {
   .sidebar li a.active .links_name,
@@ -156,7 +156,7 @@
 .sidebar li a.active i,
 .sidebar li a:hover i{
   transition: all 0.5s ease;
-  color: #af0b4d;
+  color: #a646e2;
 }
 @media (pointer:coarse) {
   .sidebar li a.active i,
@@ -374,7 +374,7 @@ html {
 }
 
 .contact_me-social .contacts-social li a:hover{
-  color: #af0b4d;
+  color: #a646e2;
   transition: all 0.5s ease;
 }
 
