@@ -301,6 +301,7 @@ html {
   color: rgb(255, 255, 255);
   border-bottom: 2px solid rgb(255, 255, 255);
   margin-bottom: 20px;
+  transition: all 0.5s ease;
 }
 
 .site_section_top p{
@@ -350,11 +351,47 @@ html {
   margin-bottom: 30px;
 }
 
+.contact_me-social .contacts-social {
+  padding-left: 0;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.contact_me-social .contacts-social li{
+  display: inline-block;
+  list-style: none;
+  max-width: 200px;
+}
+
+.contact_me-social .contacts-social li a{
+  display: flex;
+  height: 100%;
+  width: 150px;
+  border-radius: 12px;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+}
+
+.contact_me-social .contacts-social li a:hover{
+  color: #af0b4d;
+  transition: all 0.5s ease;
+}
+
+.contact_me-social .contacts-social i{
+  font-size: 36px;
+}
+
+.contact_me-social .contacts-social span{
+  font-size: 20px;
+}
+
 #section_delivery{
   color: #fff;
   background-color: rgb(17, 17, 17);
   padding-top: 30px;
   padding-bottom: 30px;
+  min-height: 980px;
 }
 
 #section_delivery h2{
