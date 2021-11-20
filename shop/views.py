@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
-from .models import Photo, MainPhoto, Category, SocialNetwork, Decoration, Material, Gem
+from .models import Photo, MainPhoto, Category, SocialNetwork, Decoration, \
+                    Material, Gem
 from .forms import ContactMe
 from bot.bot import send_visitor_message
 
@@ -36,7 +37,8 @@ class MainView(View):
             name = form.data['name']
             phone = form.data['phone_number']
             message = form.data['message']
-            bot_message = f'Имя: {name}\nТелефон: {phone}\nСообщение: {message}'
+            bot_message = f'Имя: {name}\nТелефон: {phone}'\
+                          f'\nСообщение: {message}'
             send_visitor_message(bot_message)
             return redirect("base")
 
