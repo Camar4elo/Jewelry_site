@@ -195,6 +195,21 @@ body {
   position: relative;
 }
 
+body::-webkit-scrollbar{
+  width: 5px;
+  background-color: #000000;
+}
+
+body::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background-color: #c59bff;
+}
+
+body::-webkit-scrollbar-track{
+  border-radius: 10px;
+  background-color: #000000;
+}
+
 .site_section_top {
   background-size: cover;
   background-position: top center;
@@ -436,3 +451,4 @@ html {
   font-size: 36px;
   height: 50px;
 }
+
