@@ -112,9 +112,10 @@
                             материалы не представленные здесь,
                             то вы всегда можете со мной связаться и мы с вами обсудим ваши идеи.
                         </p>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="gems">
+                        <div class="row" id="materials_row">
+                            {% for gems in gems_list %}
+                            <div class="col-md-4">
+                                <ul class="gems" style="list-style-image: url('/static/icons/Available.svg');">
                                     {% for gem in gems %}
                                     <li data-aos="fade-up" data-aos-delay="550">
                                         {{ gem.name }}
@@ -122,6 +123,7 @@
                                     {% endfor %}
                                 </ul>
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
