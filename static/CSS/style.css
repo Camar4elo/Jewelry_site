@@ -72,7 +72,7 @@
   line-height: 60px;
 }
 .sidebar .nav-list{
-  margin-top: 70px;
+  margin-top: 100px;
   padding-left: 0px;
 }
 
@@ -420,26 +420,9 @@ html {
   padding-bottom: 30px;
 }
 
-#materials_row {
-  text-align: left;
-}
-
-.materials {
-  padding-left: 40%;
-  list-style-image: url('/static/icons/Tick_Mark_icon-icons.com_69146.svg');
-}
-
-.materials li {
-  height: 50px;
-}
-
-.materials li::marker{
-  font-size: 36px;
-  height: 50px;
-}
 
 .gems {
-  padding-left: 40%;
+  text-align: left;
   list-style-image: url('/static/icons/Tick_Mark_icon-icons.com_69146.svg');
 }
 
@@ -452,3 +435,9 @@ html {
   height: 50px;
 }
 
+#logo-image {
+  width: 300px;
+  height: 300px;
+  margin-top: 100px;
+  margin-left: -48px;
+}
