@@ -4,6 +4,7 @@ from .models import Photo, MainPhoto, Category, SocialNetwork, Decoration, \
                     Gem
 from .forms import ContactMe
 from bot.bot import send_visitor_message
+import math
 
 
 class MainView(View):
@@ -16,7 +17,7 @@ class MainView(View):
         category = Category.objects.all()
         images_list = create_images_list(category)
         category_list = create_category_list(category)
-        gems = Gem.objects.all()
+        gems_list = create_gems_list()
         form = ContactMe(request.GET)
         return render(request, "base.html",
                       {"images_list": images_list,
@@ -27,7 +28,7 @@ class MainView(View):
                        "social_link_telegram": social_link_telegram.link,
                        "social_link_vk": social_link_vk.link,
                        "form": form,
-                       "gems": gems})
+                       "gems_list": gems_list})
 
     def post(self, request):
         form = ContactMe(request.POST)
@@ -65,6 +66,24 @@ def create_category_list(category):
     for category_name in category:
         category_list.append(str(category_name))
     return category_list
+
+
+def create_gems_list():
+    initial_value = 0
+    end_value = 4
+    gems = Gem.objects.all()
+    lists_amount = int(math.ceil(len(gems)/end_value))
+    gems_list = []
+    len_value = 0
+    for result in range(lists_amount):
+        res_list = []
+        for gem in gems[initial_value:end_value]:
+            res_list.append(gem)
+            len_value += 1
+        initial_value = end_value
+        end_value += 4
+        gems_list.append(res_list)
+    return gems_list
 
 
 class RingsView(View):
