@@ -23,7 +23,7 @@
     <div class="sidebar" data-aos="fade-right" data-aos-duration="1000">
         <div class="logo-details">
             <div class="logo_name">
-                <img src="media/Logo.jpg" style="width: 200px; height: 200px; margin-top: 70px;">
+                <img src="media/logo.png" id="logo-image">
             </div>
             <i class='bx bxs-chevron-left-circle' id="btn"></i>
         </div>
@@ -112,16 +112,7 @@
                             материалы не представленные здесь,
                             то вы всегда можете со мной связаться и мы с вами обсудим ваши идеи.
                         </p>
-                        <div class="row" id="materials_row">
-                            <div class="col-md-6">
-                                <ul class="materials ">
-                                    {% for material in materials %}
-                                    <li data-aos="fade-up" data-aos-delay="550">
-                                        {{ material.name }}
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <ul class="gems">
                                     {% for gem in gems %}
@@ -150,7 +141,7 @@
                             data-aos-delay={{image.data_aos_delay}}>
                             <a href="media/{{ image.name }}" class="d-block photo-item" data-lightbox="{{ category }}"
                                 data-title="{{ image.decoration_name }}">
-                                <img src="media/{{ image.name }}" alt="Image" class="img-fluid">
+                                <img src="media/{{ image.name }}" class="img-fluid">
                             </a>
                         </div>
                         {% endif %}
