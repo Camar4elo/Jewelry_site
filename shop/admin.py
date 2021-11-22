@@ -2,6 +2,9 @@ from django.contrib import admin
 from shop.models import Material, Category, Decoration, Gem, Photo, MainPhoto,\
                         SocialNetwork, MaterialsText, ContactsText,\
                         DeliveryText, PaymentText
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.contrib import messages
 
 
 class PhotoAdmin(admin.StackedInline):
@@ -43,6 +46,16 @@ class PhotoAdmin(admin.ModelAdmin):
 class MainPhotoAdmin(admin.ModelAdmin):
     list_display = ['greetings', 'main_photo', 'display_image']
 
+    def add_view(self, request):
+        if self.model.objects.count() == 1:
+            self.message_user(request,
+                              'Можно создать не более одной записи',
+                              messages.ERROR)
+            return HttpResponseRedirect(reverse(f'admin:'
+                                                f'{self.model._meta.app_label}'
+                                                f'_mainphoto_changelist'))
+        return super().add_view(request)
+
 
 @admin.register(SocialNetwork)
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -53,17 +66,57 @@ class SocialNetworkAdmin(admin.ModelAdmin):
 class MaterialsTextAdmin(admin.ModelAdmin):
     list_display = ['content']
 
+    def add_view(self, request):
+        if self.model.objects.count() == 1:
+            self.message_user(request,
+                              'Можно создать не более одной записи',
+                              messages.ERROR)
+            return HttpResponseRedirect(reverse(f'admin:'
+                                                f'{self.model._meta.app_label}'
+                                                f'_materialstext_changelist'))
+        return super().add_view(request)
+
 
 @admin.register(ContactsText)
 class ContactsTextAdmin(admin.ModelAdmin):
     list_display = ['content']
+
+    def add_view(self, request):
+        if self.model.objects.count() == 1:
+            self.message_user(request,
+                              'Можно создать не более одной записи',
+                              messages.ERROR)
+            return HttpResponseRedirect(reverse(f'admin:'
+                                                f'{self.model._meta.app_label}'
+                                                f'_contactstext_changelist'))
+        return super().add_view(request)
 
 
 @admin.register(DeliveryText)
 class DeliveryTextAdmin(admin.ModelAdmin):
     list_display = ['content']
 
+    def add_view(self, request):
+        if self.model.objects.count() == 1:
+            self.message_user(request,
+                              'Можно создать не более одной записи',
+                              messages.ERROR)
+            return HttpResponseRedirect(reverse(f'admin:'
+                                                f'{self.model._meta.app_label}'
+                                                f'_deliverytext_changelist'))
+        return super().add_view(request)
+
 
 @admin.register(PaymentText)
 class PaymentTextAdmin(admin.ModelAdmin):
     list_display = ['content']
+
+    def add_view(self, request):
+        if self.model.objects.count() == 1:
+            self.message_user(request,
+                              'Можно создать не более одной записи',
+                              messages.ERROR)
+            return HttpResponseRedirect(reverse(f'admin:'
+                                                f'{self.model._meta.app_label}'
+                                                f'_paymenttext_changelist'))
+        return super().add_view(request)
