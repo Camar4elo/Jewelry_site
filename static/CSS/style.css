@@ -422,12 +422,13 @@ html {
 
 
 .gems {
+  padding-left: 35%;
   text-align: left;
-  list-style-image: url('/static/icons/Tick_Mark_icon-icons.com_69146.svg');
 }
 
 .gems li {
   height: 50px;
+  list-style-position: inside;
 }
 
 .gems li::marker{
