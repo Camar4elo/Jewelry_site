@@ -115,11 +115,17 @@
                         <div class="row" id="materials_row">
                             {% for gems in gems_list %}
                             <div class="col-md-4">
-                                <ul class="gems" style="list-style-image: url('/static/icons/Available.svg');">
+                                <ul class="gems">
                                     {% for gem in gems %}
-                                    <li data-aos="fade-up" data-aos-delay="550">
+                                    {% if gem.choice == 1 %}
+                                    <li data-aos="fade-up" data-aos-delay="550"  style="list-style-image: url('/static/icons/Available.svg');">
                                         {{ gem.name }}
                                     </li>
+                                    {% else %}
+                                    <li data-aos="fade-up" data-aos-delay="550"  style="list-style-image: url('/static/icons/Not_available.svg');">
+                                        {{ gem.name }}
+                                    </li>
+                                    {% endif %}
                                     {% endfor %}
                                 </ul>
                             </div>
