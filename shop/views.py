@@ -6,7 +6,6 @@ from .models import Photo, MainPhoto, Category, SocialNetwork, Decoration,\
 from .forms import ContactMe
 from bot.bot import send_visitor_message
 import math
-from django.core.exceptions import ObjectDoesNotExist
 
 
 class MainView(View):
@@ -16,9 +15,8 @@ class MainView(View):
         social_link_whatsapp = SocialNetwork.objects.get(name='Whatsapp')
         social_link_telegram = SocialNetwork.objects.get(name='Telegram')
         social_link_vk = SocialNetwork.objects.get(name='VK')
-        category = Category.objects.all()
-        images_list = create_images_list(category)
-        category_list = create_category_list(category)
+        images_list = create_images_list()
+        category_list = create_category_list()
         gems_list = create_gems_list()
         materials_text = MaterialsText.objects.first()
         contacts_text = ContactsText.objects.first()
@@ -52,7 +50,8 @@ class MainView(View):
             return redirect("base")
 
 
-def create_images_list(category):
+def create_images_list():
+    category = Category.objects.all()
     images_list = []
     for category_name in category:
         decorations = Decoration.objects.filter(category_id=category_name.
@@ -71,7 +70,8 @@ def create_images_list(category):
     return images_list
 
 
-def create_category_list(category):
+def create_category_list():
+    category = Category.objects.all()
     category_list = []
     for category_name in category:
         category_list.append(str(category_name))
