@@ -106,12 +106,7 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-7 text-center">
                         <h2 data-aos="fade-up" data-aos-delay="450">Материалы</h2>
-                        <p data-aos="fade-up" data-aos-delay="500">Вся продукция изготавливается из высококачественных
-                            драгоценных металлов и камней. Здесь вы можете ознакомиться с материалами, которые
-                            я использую в изготовлении ювелирных изделий. Если вы хотите использовать в изготовлении
-                            материалы не представленные здесь,
-                            то вы всегда можете со мной связаться и мы с вами обсудим ваши идеи.
-                        </p>
+                        <p data-aos="fade-up" data-aos-delay="500">{{ materials_text.content }}</p>
                         <div class="row" id="materials_row">
                             {% for gems in gems_list %}
                             <div class="col-md-4">
@@ -165,9 +160,7 @@
                 <div class="row justify-content-center align-items-center" id="contact_form">
                     <h2 data-aos="fade-up" data-aos-delay="450">Контакты</h2>
                     <div class="col-md-7 text-center contact_me-social">
-                        <p data-aos="fade-up" data-aos-delay="500">Связаться со мной вы можете в социальных сетях
-                            по ссылкам ниже или через форму прямо на сайте.
-                        </p>
+                        <p data-aos="fade-up" data-aos-delay="500">{{ contacts_text.content }}</p>
                         <ul class="contacts-social" data-aos="fade-up" data-aos-delay="500">
                             <li class="social_name">
                                 <a href="{{social_link_instagram}}" target="_blank">
@@ -209,9 +202,8 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-7 text-center">
                         <h2 data-aos="fade-up" data-aos-delay="450">Доставка и оплата</h2>
-                        <p data-aos="fade-up" data-aos-delay="500">Доставка осуществляется до постоматов pickpoint</p>
-                        <p data-aos="fade-up" data-aos-delay="500">Оплата принимается по реквизитам, переводом по номеру
-                            карты или СБП</p>
+                        <p data-aos="fade-up" data-aos-delay="500">{{ delivery_text.content }}</p>
+                        <p data-aos="fade-up" data-aos-delay="500">{{ payment_text.content }}</p>
                     </div>
                 </div>
             </div>
