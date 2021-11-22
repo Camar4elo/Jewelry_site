@@ -29,7 +29,7 @@ class MaterialAdmin(admin.ModelAdmin):
 
 @admin.register(Gem)
 class GemsAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name', 'choice']
 
 
 @admin.register(Photo)
