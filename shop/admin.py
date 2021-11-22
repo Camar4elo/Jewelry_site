@@ -1,6 +1,7 @@
 from django.contrib import admin
 from shop.models import Material, Category, Decoration, Gem, Photo, MainPhoto,\
-                        SocialNetwork
+                        SocialNetwork, MaterialsText, ContactsText,\
+                        DeliveryText, PaymentText
 
 
 class PhotoAdmin(admin.StackedInline):
@@ -46,3 +47,23 @@ class MainPhotoAdmin(admin.ModelAdmin):
 @admin.register(SocialNetwork)
 class SocialNetworkAdmin(admin.ModelAdmin):
     list_display = ['name', 'link']
+
+
+@admin.register(MaterialsText)
+class MaterialsTextAdmin(admin.ModelAdmin):
+    list_display = ['content']
+
+
+@admin.register(ContactsText)
+class ContactsTextAdmin(admin.ModelAdmin):
+    list_display = ['content']
+
+
+@admin.register(DeliveryText)
+class DeliveryTextAdmin(admin.ModelAdmin):
+    list_display = ['content']
+
+
+@admin.register(PaymentText)
+class PaymentTextAdmin(admin.ModelAdmin):
+    list_display = ['content']

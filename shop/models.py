@@ -147,3 +147,47 @@ class SocialNetwork(models.Model):
     class Meta:
         verbose_name = 'Соцсеть'
         verbose_name_plural = 'Соцсети'
+
+
+class MaterialsText(models.Model):
+    content = models.TextField(verbose_name='Текст')
+
+    def __str__(self):
+        return f'content: {self.content}'
+
+    class Meta:
+        verbose_name = 'Текст категории материалы'
+        verbose_name_plural = 'Текст категории материалы'
+
+
+class ContactsText(models.Model):
+    content = models.TextField(verbose_name='Текст')
+
+    def __str__(self):
+        return f'content: {self.content}'
+
+    class Meta:
+        verbose_name = 'Текст категории контакты'
+        verbose_name_plural = 'Текст категории контакты'
+
+
+class DeliveryText(models.Model):
+    content = models.TextField(verbose_name='Текст')
+
+    def __str__(self):
+        return f'content: {self.content}'
+
+    class Meta:
+        verbose_name = 'Текст категории доставка'
+        verbose_name_plural = 'Текст категории доставка'
+
+
+class PaymentText(models.Model):
+    content = models.TextField(verbose_name='Текст')
+
+    def __str__(self):
+        return f'content: {self.content}'
+
+    class Meta:
+        verbose_name = 'Текст категории оплата'
+        verbose_name_plural = 'Текст категории оплата'

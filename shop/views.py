@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
-from .models import Photo, MainPhoto, Category, SocialNetwork, Decoration, \
-                    Gem
+from .models import Photo, MainPhoto, Category, SocialNetwork, Decoration,\
+                    Gem, MaterialsText, ContactsText, DeliveryText,\
+                    PaymentText
 from .forms import ContactMe
 from bot.bot import send_visitor_message
 import math
+from django.core.exceptions import ObjectDoesNotExist
 
 
 class MainView(View):
@@ -18,6 +20,10 @@ class MainView(View):
         images_list = create_images_list(category)
         category_list = create_category_list(category)
         gems_list = create_gems_list()
+        materials_text = MaterialsText.objects.first()
+        contacts_text = ContactsText.objects.first()
+        delivery_text = DeliveryText.objects.first()
+        payment_text = PaymentText.objects.first()
         form = ContactMe(request.GET)
         return render(request, "base.html",
                       {"images_list": images_list,
@@ -28,7 +34,11 @@ class MainView(View):
                        "social_link_telegram": social_link_telegram.link,
                        "social_link_vk": social_link_vk.link,
                        "form": form,
-                       "gems_list": gems_list})
+                       "gems_list": gems_list,
+                       "materials_text": materials_text,
+                       "contacts_text": contacts_text,
+                       "delivery_text": delivery_text,
+                       "payment_text": payment_text})
 
     def post(self, request):
         form = ContactMe(request.POST)
