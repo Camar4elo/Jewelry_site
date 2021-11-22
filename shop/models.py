@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import BooleanField
 from django.utils.safestring import mark_safe
 from django_resized import ResizedImageField
 
@@ -31,6 +32,7 @@ class Category(models.Model):
 class Gem(models.Model):
     name = models.CharField(max_length=30, verbose_name='Драгоценный камень',
                             unique=True)
+    choice = BooleanField(verbose_name='Наличие', null=True)
 
     class Meta:
         verbose_name = 'Драгоценный камень'
