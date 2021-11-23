@@ -65,21 +65,11 @@
             </li>
         </ul>
         <ul class="social-list">
+            {% for social_link in social_links %}
             <li>
-                <a href="{{social_link_instagram}}" target="_blank">
-                    <i class='bx bxl-instagram-alt'></i>
-                </a>
+                <a href="{{social_link.link}}" target="_blank"> {{ social_link.svg_link | safe }}</a>
             </li>
-            <li>
-                <a href="{{social_link_whatsapp}}" target="_blank">
-                    <i class='bx bxl-whatsapp'></i>
-                </a>
-            </li>
-            <li>
-                <a href="{{social_link_telegram}}" target="_blank">
-                    <i class='bx bxl-facebook-square'></i>
-                </a>
-            </li>
+            {% endfor %}
         </ul>
 
     </div>
@@ -162,24 +152,13 @@
                     <div class="col-md-7 text-center contact_me-social">
                         <p data-aos="fade-up" data-aos-delay="500">{{ contacts_text.content }}</p>
                         <ul class="contacts-social" data-aos="fade-up" data-aos-delay="500">
-                            <li class="social_name">
-                                <a href="{{social_link_instagram}}" target="_blank">
-                                    <i class='bx bxl-instagram-alt'></i>
-                                    <span class="social_name">Instagram</span>
+                            {% for social_link in social_links %}
+                            <li>
+                                <a href="{{social_link.link}}" target="_blank"> {{ social_link.svg_link | safe }}
+                                    <span>{{social_link.name}}</span>
                                 </a>
                             </li>
-                            <li class="social_name">
-                                <a href="{{social_link_whatsapp}}" target="_blank">
-                                    <i class='bx bxl-whatsapp'></i>
-                                    <span class="social_name">Whatsapp</span>
-                                </a>
-                            </li>
-                            <li class="social_name">
-                                <a href="{{social_link_telegram}}" target="_blank">
-                                    <i class='bx bxl-facebook-square'></i>
-                                    <span class="social_name">Facebook</span>
-                                </a>
-                            </li>
+                            {% endfor %}
                         </ul>                
                     </div>
                     <div class="form col-md-7 text-left">
