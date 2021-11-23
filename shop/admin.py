@@ -59,7 +59,7 @@ class MainPhotoAdmin(admin.ModelAdmin):
 
 @admin.register(SocialNetwork)
 class SocialNetworkAdmin(admin.ModelAdmin):
-    list_display = ['name', 'link']
+    list_display = ['name', 'link', 'svg_link']
 
 
 @admin.register(MaterialsText)
