@@ -11,10 +11,7 @@ import math
 class MainView(View):
     def get(self, request):
         photo_and_greetings = MainPhoto.objects.first()
-        social_link_instagram = SocialNetwork.objects.get(name='Instagram')
-        social_link_whatsapp = SocialNetwork.objects.get(name='Whatsapp')
-        social_link_telegram = SocialNetwork.objects.get(name='Telegram')
-        social_link_vk = SocialNetwork.objects.get(name='VK')
+        social_links = SocialNetwork.objects.all()
         images_list = create_images_list()
         category_list = create_category_list()
         gems_list = create_gems_list()
@@ -27,10 +24,7 @@ class MainView(View):
                       {"images_list": images_list,
                        "category_list": category_list,
                        "photo_and_greetings": photo_and_greetings,
-                       "social_link_instagram": social_link_instagram.link,
-                       "social_link_whatsapp": social_link_whatsapp.link,
-                       "social_link_telegram": social_link_telegram.link,
-                       "social_link_vk": social_link_vk.link,
+                       "social_links": social_links,
                        "form": form,
                        "gems_list": gems_list,
                        "materials_text": materials_text,
