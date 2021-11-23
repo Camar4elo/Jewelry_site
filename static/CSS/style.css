@@ -43,7 +43,6 @@
   right: 0;
   transform: translateY(-50%);
   font-size: 22px;
-  transition: all 0.4s ease;
   font-size: 23px;
   text-align: right;
   cursor: pointer;
@@ -101,7 +100,7 @@
 .sidebar.close li:hover .tooltip{
   opacity: 1;
   pointer-events: auto;
-  transition: all 0.4s ease;
+  transition: all 0.5s ease;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -117,7 +116,7 @@
   border-radius: 12px;
   align-items: center;
   text-decoration: none;
-  transition: all 0.4s ease;
+  transition: all 0.5s ease;
   background: #000000;
 }
 
@@ -127,7 +126,7 @@
   font-weight: 400;
   white-space: nowrap;
   pointer-events: none;
-  transition: 0.4s;
+  transition: all 0.5s ease;
   opacity: 1;
   pointer-events: auto;
 }
@@ -151,12 +150,14 @@
   line-height: 50px;
   font-size: 18px;
   border-radius: 12px;
+  transition: all 0.5s ease;
 }
 
 .sidebar li a.active i,
 .sidebar li a:hover i{
   transition: all 0.5s ease;
   color: #c59bff;
+  transition: all 0.5s ease;
 }
 @media (pointer:coarse) {
   .sidebar li a.active i,
@@ -275,10 +276,11 @@ html {
 }
 
 .img-fluid {
-  transition: 0.3s;
+  transition: all 0.5s ease;
 }
 
 .img-fluid:hover {
+
   transform: scale(1.15);
 }
 
@@ -297,7 +299,33 @@ html {
   }
 
 .form .button{
-  width: 100px;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  width: 150px;
+  height: 50px;
+  background-color: rgb(0, 0, 0);
+  color: #ffffff;
+  font-size: 18px;
+  transition: all 0.5s ease;
+}
+
+.form .button:hover{
+  border: 1px solid #c59bff;
+  border-radius: 8px;
+  width: 150px;
+  height: 50px;
+  background-color: rgb(0, 0, 0);
+  color: #c59bff;
+  font-size: 18px;
+  transition: all 0.5s ease;
+
+}
+
+@media (pointer:coarse) {
+  .form .button:hover {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+  }
 }
 
 .contact-form {
@@ -307,6 +335,7 @@ html {
   color: rgb(255, 255, 255);
   border-bottom: 2px solid rgba(255, 255, 255, 0.568);
   margin-bottom: 20px;
+  transition: all 0.5s ease;
 }
 
 .contact-form:hover {
@@ -386,6 +415,7 @@ html {
   align-items: center;
   text-decoration: none;
   color: #fff;
+  transition: all 0.5s ease;
 }
 
 .contact_me-social .contacts-social li a:hover{
@@ -444,3 +474,4 @@ html {
   margin-top: 100px;
   margin-left: -48px;
 }
+
