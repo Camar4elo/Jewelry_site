@@ -11,6 +11,7 @@ class Material(models.Model):
     class Meta:
         verbose_name = 'Материал'
         verbose_name_plural = 'Материалы'
+        db_table = 'material'
 
     def __str__(self):
         return self.name
@@ -24,6 +25,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+        db_table = 'category'
 
     def __str__(self):
         return self.name
@@ -37,6 +39,7 @@ class Gem(models.Model):
     class Meta:
         verbose_name = 'Драгоценный камень'
         verbose_name_plural = 'Драгоценные камни'
+        db_table = 'gem'
 
     def __str__(self):
         return self.name
@@ -57,6 +60,7 @@ class Photo(models.Model):
     class Meta:
         verbose_name = 'Изображение'
         verbose_name_plural = 'Изображения'
+        db_table = 'photo'
 
     def __str__(self):
         return self.name.path
@@ -85,6 +89,7 @@ class Decoration(models.Model):
     class Meta:
         verbose_name = 'Украшение'
         verbose_name_plural = 'Украшения'
+        db_table = 'decoration'
 
     def __str__(self):
         return self.name
@@ -119,6 +124,11 @@ class MainPhoto(models.Model):
     greetings = models.TextField(max_length=500, verbose_name='Приветствие',
                                  null=True, blank=True)
 
+    class Meta:
+        verbose_name = 'Главное фото сайта и приветствие'
+        verbose_name_plural = 'Главное фото сайта и приветствие'
+        db_table = 'mainphoto'
+
     def __str__(self):
         return f'Path: {self.main_photo.path}'
 
@@ -129,10 +139,6 @@ class MainPhoto(models.Model):
         except (AttributeError, ValueError):
             return None
     display_image.short_description = 'Главное фото'
-
-    class Meta:
-        verbose_name = 'Главное фото сайта и приветствие'
-        verbose_name_plural = 'Главное фото сайта и приветствие'
 
 
 class SocialNetwork(models.Model):
@@ -149,53 +155,59 @@ class SocialNetwork(models.Model):
                                 'далее выбрать параметр Font '
                                 'и скопировать тег i')
 
-    def __str__(self):
-        return f'name: {self.name}, link: {self.link}'
-
     class Meta:
         verbose_name = 'Соцсеть'
         verbose_name_plural = 'Соцсети'
+        db_table = 'socialnetwork'
+
+    def __str__(self):
+        return (f'name: {self.name}, link: {self.link},'
+                f' svg_link: {self.svg_link}')
 
 
 class MaterialsText(models.Model):
     content = models.TextField(verbose_name='Текст')
 
-    def __str__(self):
-        return f'content: {self.content}'
-
     class Meta:
         verbose_name = 'Текст категории материалы'
         verbose_name_plural = 'Текст категории материалы'
+        db_table = 'materialstext'
+
+    def __str__(self):
+        return f'content: {self.content}'
 
 
 class ContactsText(models.Model):
     content = models.TextField(verbose_name='Текст')
 
-    def __str__(self):
-        return f'content: {self.content}'
-
     class Meta:
         verbose_name = 'Текст категории контакты'
         verbose_name_plural = 'Текст категории контакты'
+        db_table = 'contactstext'
+
+    def __str__(self):
+        return f'content: {self.content}'
 
 
 class DeliveryText(models.Model):
     content = models.TextField(verbose_name='Текст')
 
-    def __str__(self):
-        return f'content: {self.content}'
-
     class Meta:
         verbose_name = 'Текст категории доставка'
         verbose_name_plural = 'Текст категории доставка'
+        db_table = 'deliverytext'
+
+    def __str__(self):
+        return f'content: {self.content}'
 
 
 class PaymentText(models.Model):
     content = models.TextField(verbose_name='Текст')
 
-    def __str__(self):
-        return f'content: {self.content}'
-
     class Meta:
         verbose_name = 'Текст категории оплата'
         verbose_name_plural = 'Текст категории оплата'
+        db_table = 'paymenttext'
+
+    def __str__(self):
+        return f'content: {self.content}'
