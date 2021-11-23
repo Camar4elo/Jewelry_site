@@ -137,9 +137,17 @@ class MainPhoto(models.Model):
 
 class SocialNetwork(models.Model):
     name = models.CharField(max_length=20, verbose_name='Название соцсети',
-                            unique=True)
+                            unique=True, null=False,
+                            help_text='Название соцсети')
     link = models.CharField(max_length=200, verbose_name='Ссылка на аккаунт',
-                            unique=True)
+                            unique=True, null=False)
+    svg_link = models.CharField(max_length=200,
+                                verbose_name='Ссылка на svg',
+                                unique=True, null=False,
+                                help_text='https://boxicons.com/, '
+                                'найти иконку, выбрать её, '
+                                'далее выбрать параметр Font '
+                                'и скопировать тег i')
 
     def __str__(self):
         return f'name: {self.name}, link: {self.link}'
