@@ -161,7 +161,7 @@
                             {% endfor %}
                         </ul>                
                     </div>
-                    <div class="form col-md-7 text-left">
+                    <div class="form col-md-7 text-left" >
                         <form action="" method="post" data-aos="fade-up" data-aos-delay="500">
                             {% csrf_token %}
                             {{ form.name.label }}
@@ -169,7 +169,7 @@
                             {{ form.phone_number.label}}
                             {{ form.phone_number }}
                             {{ form.message.label }}
-                            {{ form.message }}<br>
+                            {{ form.message }}
                             <input class="button" type="submit" value="Отправить">
                         </form>
                     </div>
@@ -249,6 +249,19 @@
         };
     </script>
     <script>
+       var form = $("form");
+       form.submit(function (e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                url: window.location.pathname,
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false
+    });
+});
         let detect = new MobileDetect(window.navigator.userAgent);
         let menuButton = document.querySelector("#btn");
 
@@ -257,6 +270,7 @@
             sidebar.classList.toggle("close");
         };
     </script>
+    
 </body>
 
 </html>
