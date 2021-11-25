@@ -97,17 +97,17 @@
                     <div class="col-md-7 text-center">
                         <h2 data-aos="fade-up" data-aos-delay="450">Материалы</h2>
                         <p data-aos="fade-up" data-aos-delay="500">{{ materials_text.content }}</p>
-                        <div class="row" id="materials_row">
+                        <div class="row" id="materials_row" data-aos="fade-up" data-aos-delay="550">
                             {% for gems in gems_list %}
                             <div class="col-md-4">
                                 <ul class="gems">
                                     {% for gem in gems %}
                                     {% if gem.choice == 1 %}
-                                    <li data-aos="fade-up" data-aos-delay="550"  style="list-style-image: url('/static/icons/Available.svg');">
+                                    <li style="list-style-image: url('/static/icons/Available.svg');">
                                         {{ gem.name }}
                                     </li>
                                     {% else %}
-                                    <li data-aos="fade-up" data-aos-delay="550"  style="list-style-image: url('/static/icons/Not_available.svg');">
+                                    <li style="list-style-image: url('/static/icons/Not_available.svg');">
                                         {{ gem.name }}
                                     </li>
                                     {% endif %}
