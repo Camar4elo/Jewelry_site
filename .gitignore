@@ -133,3 +133,4 @@ settings.py
 media/
 bot_settings.py
 setup.cfg
+shop/migrations
