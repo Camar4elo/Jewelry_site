@@ -132,3 +132,4 @@ settings.py
 .vscode
 media/
 bot_settings.py
+setup.cfg
