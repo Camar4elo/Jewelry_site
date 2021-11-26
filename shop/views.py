@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
-from .models import Photo, MainPhoto, Category, SocialNetwork, Decoration,\
-                    Gem, MaterialsText, ContactsText, DeliveryText,\
-                    PaymentText
+from .models import Photo, MainPhoto, Category, SocialNetwork, Decoration, Gem, MaterialsText, ContactsText,\
+                    DeliveryText, PaymentText
 from .forms import ContactMe
 from bot.bot import send_visitor_message
 import math
@@ -38,8 +37,7 @@ class MainView(View):
             name = form.data['name']
             phone = form.data['phone_number']
             message = form.data['message']
-            bot_message = f'Имя: {name}\nТелефон: {phone}'\
-                          f'\nСообщение: {message}'
+            bot_message = f'Имя: {name}\nТелефон: {phone}\nСообщение: {message}'
             send_visitor_message(bot_message)
             return redirect("base")
 
@@ -48,8 +46,7 @@ def create_images_list():
     category = Category.objects.all()
     images_list = []
     for category_name in category:
-        decorations = Decoration.objects.filter(category_id=category_name.
-                                                id).all()
+        decorations = Decoration.objects.filter(category_id=category_name.id).all()
         for decoration in decorations:
             images = Photo.objects.filter(decoration_id=decoration.id)
             data_aos_delay = 0
