@@ -274,7 +274,6 @@ html {
 }
 
 .img-fluid:hover {
-
   transform: scale(1.15);
 }
 
@@ -324,6 +323,7 @@ html {
 
 .contact-form {
   outline: none;
+  border: none;
   border-color: #000000;
   background-color: #000000;
   color: rgb(255, 255, 255);
@@ -334,7 +334,7 @@ html {
 
 .contact-form:hover {
   outline: none;
-  border-color: #000000;
+  border: none;
   background-color: #000000;
   color: rgb(255, 255, 255);
   border-bottom: 2px solid rgb(255, 255, 255);
