@@ -13,11 +13,9 @@ class PhotoAdmin(admin.StackedInline):
 
 @admin.register(Decoration)
 class DecorationAdmin(admin.ModelAdmin):
-    fields = ['name', 'category', ('gem', 'material'),
-              'price', 'description']
-    list_display = ['name', 'category', 'display_gems', 'display_material',
-                    'price', 'description', 'display_images']
-    list_filter = ['material', 'category', 'price', 'gem']
+    fields = ['name', 'category', ('gem', 'material'), 'description']
+    list_display = ['name', 'category', 'display_gems', 'display_material', 'description', 'display_images']
+    list_filter = ['material', 'category', 'gem']
     inlines = [PhotoAdmin]
 
 
@@ -48,12 +46,8 @@ class MainPhotoAdmin(admin.ModelAdmin):
 
     def add_view(self, request):
         if self.model.objects.count() == 1:
-            self.message_user(request,
-                              'Можно создать не более одной записи',
-                              messages.ERROR)
-            return HttpResponseRedirect(reverse(f'admin:'
-                                                f'{self.model._meta.app_label}'
-                                                f'_mainphoto_changelist'))
+            self.message_user(request, 'Можно создать не более одной записи', messages.ERROR)
+            return HttpResponseRedirect(reverse(f'admin: {self.model._meta.app_label}_mainphoto_changelist'))
         return super().add_view(request)
 
 
