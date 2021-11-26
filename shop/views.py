@@ -85,23 +85,3 @@ def create_gems_list():
         end_value += 4
         gems_list.append(res_list)
     return gems_list
-
-
-class RingsView(View):
-    def get(self, request):
-        return render(request, "rings.html")
-
-
-class EarringsView(View):
-    def get(self, request):
-        return render(request, "earrings.html")
-
-
-class NecklacesView(View):
-    def get(self, request):
-        return render(request, "necklaces.html")
-
-
-class ContactsView(View):
-    def get(self, request):
-        return render(request, "contacts.html")
