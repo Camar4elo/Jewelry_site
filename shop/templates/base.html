@@ -164,11 +164,8 @@
                     <div class="form col-md-7 text-left" >
                         <form action="" method="post" data-aos="fade-up" data-aos-delay="500">
                             {% csrf_token %}
-                            {{ form.name.label }}
                             {{ form.name }}
-                            {{ form.phone_number.label}}
                             {{ form.phone_number }}
-                            {{ form.message.label }}
                             {{ form.message }}
                             <input class="button" type="submit" value="Отправить">
                         </form>
@@ -248,6 +245,7 @@
             });
         };
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
     <script>
        var form = $("form");
        form.submit(function (e) {
@@ -259,8 +257,15 @@
                 data: formData,
                 cache: false,
                 contentType: false,
-                processData: false
+                processData: false,
+                complete: $('input[type="text"],textarea').val('')
             });
+        });
+    </script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.js></script>
+    <script>
+        $(document).ready(function(){
+            $('#id_phone_number').inputmask("+7(999)9999999");
         });
     </script>
     <script>
