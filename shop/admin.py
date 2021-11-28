@@ -1,7 +1,6 @@
 from django.contrib import admin
-from shop.models import Material, Category, Decoration, Gem, Photo, MainPhoto,\
-                        SocialNetwork, MaterialsText, ContactsText,\
-                        DeliveryText, PaymentText
+from shop.models import Material, Category, Decoration, Gem, Photo, MainPhoto, SocialNetwork, MaterialsText,\
+                        ContactsText, DeliveryText, PaymentText
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
@@ -47,7 +46,7 @@ class MainPhotoAdmin(admin.ModelAdmin):
     def add_view(self, request):
         if self.model.objects.count() == 1:
             self.message_user(request, 'Можно создать не более одной записи', messages.ERROR)
-            return HttpResponseRedirect(reverse(f'admin: {self.model._meta.app_label}_mainphoto_changelist'))
+            return HttpResponseRedirect(reverse(f'admin:{self.model._meta.app_label}_mainphoto_changelist'))
         return super().add_view(request)
 
 
@@ -62,12 +61,8 @@ class MaterialsTextAdmin(admin.ModelAdmin):
 
     def add_view(self, request):
         if self.model.objects.count() == 1:
-            self.message_user(request,
-                              'Можно создать не более одной записи',
-                              messages.ERROR)
-            return HttpResponseRedirect(reverse(f'admin:'
-                                                f'{self.model._meta.app_label}'
-                                                f'_materialstext_changelist'))
+            self.message_user(request, 'Можно создать не более одной записи', messages.ERROR)
+            return HttpResponseRedirect(reverse(f'admin:{self.model._meta.app_label}_materialstext_changelist'))
         return super().add_view(request)
 
 
@@ -77,12 +72,8 @@ class ContactsTextAdmin(admin.ModelAdmin):
 
     def add_view(self, request):
         if self.model.objects.count() == 1:
-            self.message_user(request,
-                              'Можно создать не более одной записи',
-                              messages.ERROR)
-            return HttpResponseRedirect(reverse(f'admin:'
-                                                f'{self.model._meta.app_label}'
-                                                f'_contactstext_changelist'))
+            self.message_user(request, 'Можно создать не более одной записи', messages.ERROR)
+            return HttpResponseRedirect(reverse(f'admin:{self.model._meta.app_label}_contactstext_changelist'))
         return super().add_view(request)
 
 
@@ -92,12 +83,8 @@ class DeliveryTextAdmin(admin.ModelAdmin):
 
     def add_view(self, request):
         if self.model.objects.count() == 1:
-            self.message_user(request,
-                              'Можно создать не более одной записи',
-                              messages.ERROR)
-            return HttpResponseRedirect(reverse(f'admin:'
-                                                f'{self.model._meta.app_label}'
-                                                f'_deliverytext_changelist'))
+            self.message_user(request, 'Можно создать не более одной записи', messages.ERROR)
+            return HttpResponseRedirect(reverse(f'admin:{self.model._meta.app_label}_deliverytext_changelist'))
         return super().add_view(request)
 
 
@@ -107,10 +94,6 @@ class PaymentTextAdmin(admin.ModelAdmin):
 
     def add_view(self, request):
         if self.model.objects.count() == 1:
-            self.message_user(request,
-                              'Можно создать не более одной записи',
-                              messages.ERROR)
-            return HttpResponseRedirect(reverse(f'admin:'
-                                                f'{self.model._meta.app_label}'
-                                                f'_paymenttext_changelist'))
+            self.message_user(request, 'Можно создать не более одной записи', messages.ERROR)
+            return HttpResponseRedirect(reverse(f'admin:{self.model._meta.app_label}_paymenttext_changelist'))
         return super().add_view(request)
