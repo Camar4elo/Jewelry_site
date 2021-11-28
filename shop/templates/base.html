@@ -103,12 +103,14 @@
                                 <ul class="gems">
                                     {% for gem in gems %}
                                     {% if gem.choice == 1 %}
-                                    <li style="list-style-image: url('/static/icons/Available.svg');">
-                                        {{ gem.name }}
+                                    <li>
+                                        <i class='bx bx-check' style='color:#1cb914'></i>
+                                        <span class="gem_name">{{ gem.name }}</span>
                                     </li>
                                     {% else %}
-                                    <li style="list-style-image: url('/static/icons/Not_available.svg');">
-                                        {{ gem.name }}
+                                    <li>
+                                        <i class='bx bx-x' style='color:#d81010'></i>
+                                        <span class="gem_name">{{ gem.name }}</span>
                                     </li>
                                     {% endif %}
                                     {% endfor %}
