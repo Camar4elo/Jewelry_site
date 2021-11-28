@@ -147,11 +147,11 @@
 
         <section id="section_contacts">
             <div class="container-fluid">
-                <div class="row justify-content-center align-items-center" id="contact_form">
-                    <h2 data-aos="fade-up" data-aos-delay="450">Контакты</h2>
+                <div class="row justify-content-center align-items-center" id="contact_form" data-aos="fade-up" data-aos-delay="500">
+                    <h2>Контакты</h2>
                     <div class="col-md-7 text-center contact_me-social">
-                        <p data-aos="fade-up" data-aos-delay="500">{{ contacts_text.content }}</p>
-                        <ul class="contacts-social" data-aos="fade-up" data-aos-delay="500">
+                        <p>{{ contacts_text.content }}</p>
+                        <ul class="contacts-social">
                             {% for social_link in social_links %}
                             <li>
                                 <a href="{{social_link.link}}" target="_blank"> {{ social_link.svg_link | safe }}
@@ -162,7 +162,7 @@
                         </ul>                
                     </div>
                     <div class="form col-md-7 text-left" >
-                        <form action="" method="post" data-aos="fade-up" data-aos-delay="500">
+                        <form action="" method="post">
                             {% csrf_token %}
                             {{ form.name }}
                             {{ form.phone_number }}
@@ -193,13 +193,13 @@
 
         closeBtn.addEventListener("click", () => {
             sidebar.classList.toggle("close");
-            menuBtnChange();//calling the function(optional)
+            menuBtnChange();
         });
         function menuBtnChange() {
             if (sidebar.classList.contains("close")) {
-                closeBtn.classList.replace("bxs-chevron-left-circle", "bxs-chevron-right-circle");//replacing the iocns class
+                closeBtn.classList.replace("bxs-chevron-left-circle", "bxs-chevron-right-circle");
             } else {
-                closeBtn.classList.replace("bxs-chevron-right-circle", "bxs-chevron-left-circle");//replacing the iocns class
+                closeBtn.classList.replace("bxs-chevron-right-circle", "bxs-chevron-left-circle");
             }
         }
     </script>
@@ -221,6 +221,7 @@
             'alwaysShowNavOnTouchDevices': true,
             'fadeDuration': 300,
             'imageFadeDuration': 300,
+            'albumLabel': 'Изображение %1 из %2'
         })
     </script>
     <script>
@@ -276,6 +277,11 @@
             menuButton.classList.replace("bxs-chevron-left-circle", "bxs-chevron-right-circle");
             sidebar.classList.toggle("close");
         };
+    </script>
+    <script>
+        $("form").on('submit', function(event) {
+              alert("Сообщение отправлено!");
+        });
     </script>
     
 </body>
