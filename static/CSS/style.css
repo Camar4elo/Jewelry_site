@@ -66,7 +66,7 @@
   line-height: 60px;
 }
 .sidebar .nav-list{
-  margin-top: 100px;
+  margin-top: 40px;
   padding-left: 0px;
 }
 
@@ -353,6 +353,10 @@ html {
   padding-bottom: 30px;
 }
 
+#section_materials .row{
+  width: auto;
+}
+
 #section_materials h2{
   text-align: center;
   padding-bottom: 30px;
@@ -360,6 +364,7 @@ html {
 
 #section_materials p{
   line-height: 30px;
+  margin-bottom: 30px;
 }
 
 #section_work{
@@ -444,28 +449,63 @@ html {
   padding-bottom: 30px;
 }
 
-
 .gems {
-  padding-left: 35%;
-  text-align: left;
+  list-style-type: none;
+  padding: 0;
+}
+
+@media (min-width: 1920px) {
+  .gems li {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    list-style: none;
+    border-radius: 12px;
+    align-items: center;
+    text-decoration: none;
+    background: #000000;
+    padding-left: 25%;
+  }
 }
 
 .gems li {
+  display: flex;
+  height: 100%;
+  width: 100%;
   position: relative;
-  height: 50px;
-  width: 200px;
-  list-style-position: inside;
+  list-style: none;
+  border-radius: 12px;
+  align-items: center;
+  text-decoration: none;
+  background: #000000;
 }
 
-.gems li::marker{
+
+.gems li i{
+  line-height: 48px;
   font-size: 36px;
+  border-radius: 12px;
+  width: 50px;
   height: 50px;
+  text-align: center;
+}
+
+.gems li .gem_name{
+  text-align: left;
+  min-width: 100px;
 }
 
 #logo-image {
-  width: 300px;
-  height: 300px;
-  margin-top: 100px;
-  margin-left: -48px;
+  width: 200px;
+  height: 200px;
+  margin-top: -80px;
+  position: absolute;
+  /* margin-left: -48px; */
 }
 
+@media (max-width: 768px) {
+  .gems {
+    padding-left: 27%;
+  }
+}
