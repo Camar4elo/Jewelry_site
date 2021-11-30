@@ -47,7 +47,7 @@ class Photo(models.Model):
 
     name = ResizedImageField(verbose_name='Изображение', size=[900, 900], upload_to=set_file_directory,
                              blank=True, null=True)
-    decoration = models.ForeignKey('Decoration', on_delete=models.CASCADE, related_name='image',
+    decoration = models.ForeignKey('Decoration', on_delete=models.CASCADE, related_name='decoration_photo',
                                    verbose_name='Название изделия', blank=True, null=True)
 
     class Meta:
@@ -66,7 +66,7 @@ class Photo(models.Model):
 
 class Decoration(models.Model):
     name = models.CharField(verbose_name='Название изделия', max_length=250, unique=True)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, related_name='categ',
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, related_name='category',
                                  verbose_name='Категория', null=True)
     material = models.ManyToManyField(Material, verbose_name='Материал', blank=True)
     gem = models.ManyToManyField(Gem, verbose_name='Драгоценные камни', blank=True)
@@ -93,7 +93,7 @@ class Decoration(models.Model):
     def display_images(self):
         try:
             images = ''
-            for image in self.image.all():
+            for image in self.decoration_photo.all():
                 images += (f'<img src="{image.name.url}" width="100" height="100">')
             return mark_safe(images)
         except (AttributeError, ValueError):
@@ -103,9 +103,9 @@ class Decoration(models.Model):
 
 
 class MainPhoto(models.Model):
-    main_photo = ResizedImageField(verbose_name='Главное фото', size=[1200, 900], upload_to='Главное фото',
-                                   blank=True, null=True)
-    greetings = models.TextField(verbose_name='Приветствие', max_length=500, blank=True, null=True)
+    photo = ResizedImageField(verbose_name='Главное фото', size=[1200, 900], upload_to='Главное фото',
+                              blank=True, null=True)
+    content = models.TextField(verbose_name='Приветствие', max_length=500, blank=True, null=True)
 
     class Meta:
         verbose_name = 'Главное фото сайта и приветствие'
@@ -113,11 +113,11 @@ class MainPhoto(models.Model):
         db_table = 'mainphoto'
 
     def __str__(self):
-        return f'Path: {self.main_photo.path}'
+        return f'Path: {self.photo.path}'
 
     def display_image(self):
         try:
-            return mark_safe(f'<img src="{self.main_photo.url}" "width="750" height="500">')
+            return mark_safe(f'<img src="{self.photo.url}" "width="750" height="500">')
         except (AttributeError, ValueError):
             return None
     display_image.short_description = 'Главное фото'
