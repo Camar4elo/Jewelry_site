@@ -41,7 +41,7 @@ class PhotoAdmin(admin.ModelAdmin):
 
 @admin.register(MainPhoto)
 class MainPhotoAdmin(admin.ModelAdmin):
-    list_display = ['greetings', 'main_photo', 'display_image']
+    list_display = ['content', 'photo', 'display_image']
 
     def add_view(self, request):
         if self.model.objects.count() == 1:
