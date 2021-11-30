@@ -78,14 +78,14 @@
     <main class="home-section">
 
         <section class="site_section_top" id="section_main"
-            style="background-image: url('media/{{photo_and_greetings.main_photo}}')">
+            style="background-image: url('media/{{ main_photo.photo }}')">
             <div class="container-fluid">
                 <div class="row justify-content-center align-items-center" id="home">
                     <div class="col-md-7 text-center">
                         <h1 class="text-white heading text-uppercase" data-aos="fade-up" data-aos-delay="450">Привет
                         </h1>
                         <p data-aos="fade-up" data-aos-delay="500">
-                            {{photo_and_greetings.greetings}}
+                            {{ main_text.content }}
                         </p>
                     </div>
                 </div>
@@ -157,7 +157,8 @@
                         <ul class="contacts-social">
                             {% for social_link in social_links %}
                             <li>
-                                <a href="{{social_link.link}}" target="_blank"> {{ social_link.svg_link | safe }}
+                                <a href="{{social_link.link}}" target="_blank">
+                                    {{ social_link.svg_link | safe }}
                                     <span>{{social_link.name}}</span>
                                 </a>
                             </li>
