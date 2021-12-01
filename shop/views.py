@@ -11,7 +11,7 @@ class MainView(View):
     def get(self, request):
         main_photo = MainPhoto.objects.values('photo').first()
         main_text = MainPhoto.objects.values('content').first()
-        social_links = SocialNetwork.objects.all()
+        social_networks = SocialNetwork.objects.all()
         images_list = create_images_list()
         category_list = create_category_list()
         gems_list = create_gems_list()
@@ -24,7 +24,7 @@ class MainView(View):
                       {"images_list": images_list,
                        "category_list": category_list,
                        "main_photo": main_photo,
-                       "social_links": social_links,
+                       "social_networks": social_networks,
                        "form": form,
                        "gems_list": gems_list,
                        "main_text": main_text,
