@@ -24,7 +24,7 @@
     <div class="sidebar" data-aos="fade-right" data-aos-duration="1000">
         <div class="logo-details">
             <div class="logo_name">
-                <img src="media/logo.png" id="logo-image">
+                <img src="media/logo.png">
             </div>
             <i class='bx bxs-chevron-left-circle' id="btn"></i>
         </div>
@@ -44,7 +44,7 @@
                 <span class="tooltip">Материалы</span>
             </li>
             <li>
-                <a href="#section_work">
+                <a href="#section_works">
                     <i class='bx bx-images'></i>
                     <span class="links_name">Примеры работ</span>
                 </a>
@@ -77,13 +77,12 @@
 
     <main class="home-section">
 
-        <section class="site_section_top" id="section_main"
+        <section id="section_main"
             style="background-image: url('media/{{ main_photo.photo }}')">
             <div class="container-fluid">
-                <div class="row justify-content-center align-items-center" id="home">
+                <div class="row justify-content-center align-items-center">
                     <div class="col-md-7 text-center">
-                        <h1 class="text-white heading text-uppercase" data-aos="fade-up" data-aos-delay="450">Привет
-                        </h1>
+                        <h1 class="text-white heading text-uppercase" data-aos="fade-up" data-aos-delay="450">Привет</h1>
                         <p data-aos="fade-up" data-aos-delay="500">
                             {{ main_text.content }}
                         </p>
@@ -101,17 +100,17 @@
                         <div class="row" id="materials_row" data-aos="fade-up" data-aos-delay="200">
                             {% for gems in gems_list %}
                             <div class="col-md-4">
-                                <ul class="gems">
+                                <ul class="gems-list">
                                     {% for gem in gems %}
                                     {% if gem.choice == 1 %}
                                     <li>
                                         <i class='bx bx-check' style='color:#1cb914'></i>
-                                        <span class="gem_name">{{ gem.name }}</span>
+                                        <span class="gem-name">{{ gem.name }}</span>
                                     </li>
                                     {% else %}
                                     <li>
                                         <i class='bx bx-x' style='color:#d81010'></i>
-                                        <span class="gem_name">{{ gem.name }}</span>
+                                        <span class="gem-name">{{ gem.name }}</span>
                                     </li>
                                     {% endif %}
                                     {% endfor %}
@@ -124,13 +123,13 @@
             </div>
         </section>
 
-        <section class="photos" id="section_work">
-            <div class="container-fluid" id="photo_container">
+        <section id="section_works">
+            <div class="container-fluid">
                 <h2 data-aos="fade-up" data-aos-delay="100">Примеры работ</h2>
-                <div class="col-12" id="images_columns">
+                <div class="col-12">
                     {% for category in category_list %}
-                    <div class="row align-items-stretch" id="pht">
-                        <h3 class="jewel-category" data-aos="fade-up" data-aos-delay="200">{{category}}</h3>
+                    <div class="row align-items-stretch">
+                        <h3 data-aos="fade-up" data-aos-delay="200">{{category}}</h3>
                         {% for image in images_list %}
                         {% if category == image.category %}
                         <div class="col-4 col-md-4 col-lg-2" id="images" data-aos="fade-up"
@@ -150,11 +149,11 @@
 
         <section id="section_contacts">
             <div class="container-fluid">
-                <div class="row justify-content-center align-items-center" id="contact_form">
+                <div class="row justify-content-center align-items-center">
                     <h2 data-aos="fade-up" data-aos-delay="100">Контакты</h2>
-                    <div class="col-md-7 text-center contact_me-social">
+                    <div class="contacts col-md-7 text-center">
                         <p data-aos="fade-up" data-aos-delay="200">{{ contacts_text.content }}</p>
-                        <ul class="contacts-social" data-aos="fade-up" data-aos-delay="200">
+                        <ul data-aos="fade-up" data-aos-delay="200">
                             {% for social_network in social_networks %}
                             <li>
                                 <a href="{{social_network.link}}" target="_blank">
@@ -165,7 +164,7 @@
                             {% endfor %}
                         </ul>                
                     </div>
-                    <div class="form col-md-7 text-left" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-form col-md-7 text-left" data-aos="fade-up" data-aos-delay="200">
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ form.name }}
