@@ -71,7 +71,12 @@
   line-height: 60px;
 }
 .sidebar .nav-list{
-  margin-top: 40px;
+  margin-top: 100px;
+  padding-left: 0px;
+}
+
+.sidebar.close .nav-list{
+  margin-top: 0px;
   padding-left: 0px;
 }
 
@@ -172,7 +177,6 @@
   top: 0;
   left: 250px;
   width: calc(100% - 250px);
-  /* transition: all 0.5s ease; */
   z-index: 2;
 }
 .sidebar.close ~ .home-section{
@@ -502,11 +506,10 @@ html {
 }
 
 #logo-image {
-  width: 200px;
-  height: 200px;
-  margin-top: -80px;
-  position: absolute;
-  margin-left: -30px;
+  width: 300px;
+  height: 300px;
+  margin-top: 100px;
+  margin-left: -48px;
 }
 
 @media (max-width: 768px) {
