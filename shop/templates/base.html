@@ -66,9 +66,9 @@
             </li>
         </ul>
         <ul class="social-list">
-            {% for social_link in social_links %}
+            {% for social_network in social_networks %}
             <li>
-                <a href="{{social_link.link}}" target="_blank"> {{ social_link.svg_link | safe }}</a>
+                <a href="{{social_link.link}}" target="_blank"> {{ social_network.svg_link | safe }}</a>
             </li>
             {% endfor %}
         </ul>
@@ -96,9 +96,9 @@
             <div class="container-fluid">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-7 text-center">
-                        <h2 data-aos="fade-up" data-aos-delay="450">Материалы</h2>
-                        <p data-aos="fade-up" data-aos-delay="500">{{ materials_text.content }}</p>
-                        <div class="row" id="materials_row" data-aos="fade-up" data-aos-delay="550">
+                        <h2 data-aos="fade-up" data-aos-delay="100">Материалы</h2>
+                        <p data-aos="fade-up" data-aos-delay="200">{{ materials_text.content }}</p>
+                        <div class="row" id="materials_row" data-aos="fade-up" data-aos-delay="200">
                             {% for gems in gems_list %}
                             <div class="col-md-4">
                                 <ul class="gems">
@@ -126,11 +126,11 @@
 
         <section class="photos" id="section_work">
             <div class="container-fluid" id="photo_container">
-                <h2 data-aos="fade-up" data-aos-delay="450">Примеры работ</h2>
+                <h2 data-aos="fade-up" data-aos-delay="100">Примеры работ</h2>
                 <div class="col-12" id="images_columns">
                     {% for category in category_list %}
                     <div class="row align-items-stretch" id="pht">
-                        <h3 class="jewel-category" data-aos="fade-up" data-aos-delay="500">{{category}}</h3>
+                        <h3 class="jewel-category" data-aos="fade-up" data-aos-delay="200">{{category}}</h3>
                         {% for image in images_list %}
                         {% if category == image.category %}
                         <div class="col-4 col-md-4 col-lg-2" id="images" data-aos="fade-up"
@@ -150,22 +150,22 @@
 
         <section id="section_contacts">
             <div class="container-fluid">
-                <div class="row justify-content-center align-items-center" id="contact_form" data-aos="fade-up" data-aos-delay="500">
-                    <h2>Контакты</h2>
+                <div class="row justify-content-center align-items-center" id="contact_form">
+                    <h2 data-aos="fade-up" data-aos-delay="100">Контакты</h2>
                     <div class="col-md-7 text-center contact_me-social">
-                        <p>{{ contacts_text.content }}</p>
-                        <ul class="contacts-social">
-                            {% for social_link in social_links %}
+                        <p data-aos="fade-up" data-aos-delay="200">{{ contacts_text.content }}</p>
+                        <ul class="contacts-social" data-aos="fade-up" data-aos-delay="200">
+                            {% for social_network in social_networks %}
                             <li>
-                                <a href="{{social_link.link}}" target="_blank">
-                                    {{ social_link.svg_link | safe }}
-                                    <span>{{social_link.name}}</span>
+                                <a href="{{social_network.link}}" target="_blank">
+                                    {{ social_network.svg_link | safe }}
+                                    <span>{{social_network.name}}</span>
                                 </a>
                             </li>
                             {% endfor %}
                         </ul>                
                     </div>
-                    <div class="form col-md-7 text-left" >
+                    <div class="form col-md-7 text-left" data-aos="fade-up" data-aos-delay="200">
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ form.name }}
@@ -181,9 +181,9 @@
             <div class="container-fluid">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-7 text-center">
-                        <h2 data-aos="fade-up" data-aos-delay="450">Доставка и оплата</h2>
-                        <p data-aos="fade-up" data-aos-delay="500">{{ delivery_text.content }}</p>
-                        <p data-aos="fade-up" data-aos-delay="500">{{ payment_text.content }}</p>
+                        <h2 data-aos="fade-up" data-aos-delay="100">Доставка и оплата</h2>
+                        <p data-aos="fade-up" data-aos-delay="200">{{ delivery_text.content }}</p>
+                        <p data-aos="fade-up" data-aos-delay="200">{{ payment_text.content }}</p>
                     </div>
                 </div>
             </div>
@@ -191,10 +191,16 @@
 
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+        integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         let sidebar = document.querySelector(".sidebar");
         let closeBtn = document.querySelector("#btn");
-
         closeBtn.addEventListener("click", () => {
             sidebar.classList.toggle("close");
             menuBtnChange();
@@ -207,13 +213,6 @@
             }
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
-        integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
-        integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
