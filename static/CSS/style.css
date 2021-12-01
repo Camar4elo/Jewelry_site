@@ -354,7 +354,7 @@ body::-webkit-scrollbar-track{
   padding: auto;
 }
 #section_contacts .row .contacts ul{
-  padding-bottom: 30px;
+  margin-bottom: 30px;
 }
 #section_contacts .row .contacts li{
   display: inline-block;
