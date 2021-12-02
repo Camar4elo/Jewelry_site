@@ -45,8 +45,8 @@ class Photo(models.Model):
     def set_file_directory(self, filename):
         return (f'{self.decoration.category}/{self.decoration.name}/{filename}')
 
-    name = ResizedImageField(verbose_name='Изображение', size=[900, 900], upload_to=set_file_directory,
-                             blank=True, null=True)
+    photo = ResizedImageField(verbose_name='Изображение', size=[900, 900], upload_to=set_file_directory,
+                              blank=True, null=True)
     decoration = models.ForeignKey('Decoration', on_delete=models.CASCADE, related_name='decoration_photo',
                                    verbose_name='Название изделия', blank=True, null=True)
 
@@ -56,10 +56,10 @@ class Photo(models.Model):
         db_table = 'photo'
 
     def __str__(self):
-        return self.name.path
+        return self.photo.path
 
     def display_image(self):
-        return mark_safe(f'<img src="{self.name.url}"width="100" height="100"')
+        return mark_safe(f'<img src="{self.photo.url}"width="100" height="100"')
 
     display_image.short_description = 'Изображение'
 
@@ -94,7 +94,7 @@ class Decoration(models.Model):
         try:
             images = ''
             for image in self.decoration_photo.all():
-                images += (f'<img src="{image.name.url}" width="100" height="100">')
+                images += (f'<img src="{image.photo.url}" width="100" height="100">')
             return mark_safe(images)
         except (AttributeError, ValueError):
             return None
