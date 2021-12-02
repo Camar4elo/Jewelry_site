@@ -134,7 +134,7 @@
                         {% if category == image.category %}
                         <div class="col-4 col-md-4 col-lg-2" id="images" data-aos="fade-up"
                             data-aos-delay={{image.data_aos_delay}}>
-                            <a href="media/{{ image.name }}" class="d-block photo-item" data-lightbox="{{ category }}"
+                            <a href="media/{{ image.name }}" data-lightbox="{{ category }}"
                                 data-title="{{ image.decoration_name }}">
                                 <img src="media/{{ image.name }}" class="img-fluid">
                             </a>
