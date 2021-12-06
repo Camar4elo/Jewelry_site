@@ -45,25 +45,30 @@ class MainView(View):
 
 
 def create_images_list():
+    """
+    Makes a query to the db. Forms a list with jewelry images and data_aos_delay value.
+    Data_aos_delay refers to the JS AOS library, responsible for the animation speed.
+    """
     category = Category.objects.all()
     images_list = []
     for category_name in category:
         decorations = Decoration.objects.filter(category_id=category_name.id).all()
+        data_aos_delay = 0
         for decoration in decorations:
             images = Photo.objects.filter(decoration_id=decoration.id)
-            data_aos_delay = 0
             for image in images:
                 if data_aos_delay == 600:
                     data_aos_delay = 0
                 data_aos_delay += 100
                 images_list.append({"category": category_name.name,
-                                    "name": image.name,
+                                    "name": image.photo,
                                     "data_aos_delay": str(data_aos_delay),
                                     "decoration_name": decoration.name})
     return images_list
 
 
 def create_category_list():
+    """Makes a query to the db. Forms a list with jewelry categories"""
     category = Category.objects.all()
     category_list = []
     for category_name in category:
@@ -72,9 +77,11 @@ def create_category_list():
 
 
 def create_gems_list():
+    """Makes a query to the db. Forms a list with gems."""
     initial_value = 0
     end_value = 4
     gems = Gem.objects.all()
+    # used to form the numbers of html tag <ul>, including no more than 4 tags <li>
     lists_amount = int(math.ceil(len(gems)/end_value))
     gems_list = []
     for i in range(lists_amount):
